@@ -1,0 +1,214 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Add_Cell	Edge.h	/^		void	Add_Cell(class Cell *cell, const char which_one){ $/;"	f	class:Edge
+Add_To_Available	Maze.cpp	/^Add_To_Available(Cell *cell, int *available, int &num_available)$/;"	f	file:
+BUFFER	Maze.cpp	/^const float Maze::BUFFER = 0.1f;$/;"	m	class:Maze	file:
+BUFFER	Maze.h	/^		static const float	BUFFER;	\/\/ The viewer must be at least this far inside$/;"	m	class:Maze
+BUILDOBJS	Makefile	/^BUILDOBJS=$(BUILDSRC:.cpp=.o)$/;"	m
+BUILDSRC	Makefile	/^BUILDSRC=Cell.cpp Edge.cpp LineSeg.cpp MapWidget.cpp Maze.cpp MazeWindow.cpp BuildMaze.cpp Vertex.cpp$/;"	m
+BUTTON_H	BuildMaze.cpp	/^static const int    BUTTON_H	= 25;$/;"	v	file:
+BUTTON_H	RunMaze.cpp	/^static const int    BUTTON_H = 25;$/;"	v	file:
+BUTTON_W	RunMaze.cpp	/^static const int    BUTTON_W = 100;$/;"	v	file:
+Build_Callback	BuildMaze.cpp	/^static void Build_Callback(Fl_Widget *widget, void *data)$/;"	f	file:
+Build_Connectivity	Maze.cpp	/^Build_Connectivity(const int num_x, const int num_y,$/;"	f	class:Maze
+Build_Interface	BuildMaze.cpp	/^static void Build_Interface(Fl_Window &window)$/;"	f	file:
+Build_Maze	Maze.cpp	/^Build_Maze()$/;"	f	class:Maze
+CC	Makefile	/^CC=g++$/;"	m
+COUNTER_H	BuildMaze.cpp	/^static const int    COUNTER_H = 50;$/;"	v	file:
+COUNTER_W	BuildMaze.cpp	/^static const int    COUNTER_W = 150;$/;"	v	file:
+CPPFLAGS	Makefile	/^CPPFLAGS=-g -Wall $(shell fltk-config --use-gl --use-images --cxxflags) -I. -lGL -lGLU $/;"	m
+Cell	Cell.cpp	/^Cell(int i, Edge *px, Edge *py, Edge *mx, Edge *my)$/;"	f	class:Cell
+Cell	Cell.h	/^class Cell {$/;"	c
+Cell_Side	Edge.cpp	/^Cell_Side(Cell *cell)$/;"	f	class:Edge
+Clip_To_Cell	Cell.cpp	/^Clip_To_Cell(float &xs, float &ys,$/;"	f	class:Cell
+Cross_Param	LineSeg.cpp	/^Cross_Param(LineSeg e)$/;"	f	class:LineSeg
+Drag	MazeWindow.cpp	/^Drag(float dt)$/;"	f	class:MazeWindow
+Draw_Frustum	MapWidget.cpp	/^Draw_Frustum(void)$/;"	f	class:MapWidget
+Draw_Frustum	Maze.cpp	/^Draw_Frustum(int min_x, int min_y, int max_x, int max_y)$/;"	f	class:Maze
+Draw_Map	Maze.cpp	/^Draw_Map(int min_x, int min_y, int max_x, int max_y)$/;"	f	class:Maze
+Draw_Neighbors	Maze.cpp	/^Draw_Neighbors(int min_x, int min_y, int max_x, int max_y)$/;"	f	class:Maze
+Draw_View	Maze.cpp	/^Draw_View(const float focal_dist)$/;"	f	class:Maze
+END	Edge.cpp	/^const char  Edge::END		= 1;$/;"	m	class:Edge	file:
+END	Edge.h	/^		static const char	END;$/;"	m	class:Edge
+Edge	Edge.cpp	/^Edge(int i, Vertex *start, Vertex *end, float r, float g, float b)$/;"	f	class:Edge
+Edge	Edge.h	/^class Edge {$/;"	c
+Find_View_Cell	Maze.cpp	/^Find_View_Cell(Cell *seed_cell)$/;"	f	class:Maze
+GAP	BuildMaze.cpp	/^static const int    GAP			= 5;$/;"	v	file:
+GAP	RunMaze.cpp	/^static const int    GAP = 5;$/;"	v	file:
+LDFLAGS	Makefile	/^LDFLAGS = $(shell fltk-config --use-gl --use-images --ldflags)$/;"	m
+LEFT	Edge.cpp	/^const char  Edge::LEFT		= 0;$/;"	m	class:Edge	file:
+LEFT	Edge.h	/^		static const char	LEFT;$/;"	m	class:Edge
+LineSeg	LineSeg.cpp	/^LineSeg(Edge *e)$/;"	f	class:LineSeg
+LineSeg	LineSeg.cpp	/^LineSeg(float xs, float ys, float xe, float ye)$/;"	f	class:LineSeg
+LineSeg	LineSeg.h	/^class LineSeg {$/;"	c
+Load_Callback	BuildMaze.cpp	/^void Load_Callback(Fl_Widget *widget, void *data)$/;"	f
+Load_Callback	RunMaze.cpp	/^static void Load_Callback(Fl_Widget *widget, void *data)$/;"	f	file:
+MAP_WINDOW_H	RunMaze.cpp	/^static const int    MAP_WINDOW_H = 400;$/;"	v	file:
+MAP_WINDOW_W	RunMaze.cpp	/^static const int    MAP_WINDOW_W = 400;$/;"	v	file:
+MAZE_WINDOW_H	RunMaze.cpp	/^static const int    MAZE_WINDOW_H = 600;$/;"	v	file:
+MAZE_WINDOW_W	RunMaze.cpp	/^static const int    MAZE_WINDOW_W = 600;$/;"	v	file:
+MINUS_X	Cell.cpp	/^const char  Cell::MINUS_X	= 2;$/;"	m	class:Cell	file:
+MINUS_X	Cell.h	/^    static const char	MINUS_X;        \/\/ The edge in the negative x direction$/;"	m	class:Cell
+MINUS_Y	Cell.cpp	/^const char  Cell::MINUS_Y	= 3;$/;"	m	class:Cell	file:
+MINUS_Y	Cell.h	/^    static const char	MINUS_Y;        \/\/ The edge in the negative y direction$/;"	m	class:Cell
+MapWidget	MapWidget.cpp	/^MapWidget(int x, int y, int width, int height, char *label, Maze *m)$/;"	f	class:MapWidget
+MapWidget	MapWidget.h	/^class MapWidget : public Fl_Widget {$/;"	c
+Maze	Maze.cpp	/^Maze(const char *filename)$/;"	f	class:Maze
+Maze	Maze.cpp	/^Maze(const int nx, const int ny, const float sx, const float sy)$/;"	f	class:Maze
+Maze	Maze.h	/^class Maze {$/;"	c
+MazeException	Maze.cpp	/^MazeException(const char *m)$/;"	f	class:MazeException
+MazeException	Maze.h	/^class MazeException {$/;"	c
+MazeWindow	MazeWindow.cpp	/^MazeWindow(int x, int y, int width, int height, char *label,Maze *m)$/;"	f	class:MazeWindow
+MazeWindow	MazeWindow.h	/^class MazeWindow : public Fl_Gl_Window {$/;"	c
+Message	Maze.h	/^		const char* Message(void) { return message; };$/;"	f	class:MazeException
+Move_View_Posn	Maze.cpp	/^Move_View_Posn(const float dx, const float dy, const float dz)$/;"	f	class:Maze
+NEITHER	Edge.cpp	/^const char  Edge::NEITHER	= 3;$/;"	m	class:Edge	file:
+NEITHER	Edge.h	/^		static const char	NEITHER;$/;"	m	class:Edge
+Neighbor	Edge.h	/^		class Cell*	Neighbor(class Cell *cell) { $/;"	f	class:Edge
+OBJS	Makefile	/^OBJS=$(SRC:.cpp=.o)$/;"	m
+ON	Edge.cpp	/^const char  Edge::ON			= 2;$/;"	m	class:Edge	file:
+ON	Edge.h	/^		static const char	ON;$/;"	m	class:Edge
+PLUS_X	Cell.cpp	/^const char  Cell::PLUS_X	= 0;$/;"	m	class:Cell	file:
+PLUS_X	Cell.h	/^    static const char	PLUS_X;         \/\/ The edge in the positive x direction$/;"	m	class:Cell
+PLUS_Y	Cell.cpp	/^const char  Cell::PLUS_Y	= 1;$/;"	m	class:Cell	file:
+PLUS_Y	Cell.h	/^    static const char	PLUS_Y;         \/\/ The edge in the positive y direction$/;"	m	class:Cell
+Point	Point.h	/^		Point(const Point &p_in) {$/;"	f	class:Point
+Point	Point.h	/^		Point(const float x, const float y, const float z) {$/;"	f	class:Point
+Point	Point.h	/^class Point {$/;"	c
+Point_In_Cell	Cell.cpp	/^Point_In_Cell(const float x, const float y, const float z,$/;"	f	class:Cell
+Point_Side	Edge.cpp	/^Point_Side(float x, float y)$/;"	f	class:Edge
+Quit_Callback	BuildMaze.cpp	/^static void Quit_Callback(Fl_Widget *widget, void *data)$/;"	f	file:
+RIGHT	Edge.cpp	/^const char  Edge::RIGHT		= 1;$/;"	m	class:Edge	file:
+RIGHT	Edge.h	/^		static const char	RIGHT;$/;"	m	class:Edge
+SRC	Makefile	/^SRC=Cell.cpp Edge.cpp LineSeg.cpp MapWidget.cpp Maze.cpp MazeWindow.cpp RunMaze.cpp Vertex.cpp$/;"	m
+START	Edge.cpp	/^const char  Edge::START		= 0;$/;"	m	class:Edge	file:
+START	Edge.h	/^		static const char	START;$/;"	m	class:Edge
+Save	Maze.cpp	/^Save(const char *filename)$/;"	f	class:Maze
+Save_Callback	BuildMaze.cpp	/^static void Save_Callback(Fl_Widget *widget, void *data)$/;"	f	file:
+Set_Extents	Maze.cpp	/^Set_Extents(void)$/;"	f	class:Maze
+Set_Maze	MapWidget.cpp	/^Set_Maze(Maze *m)$/;"	f	class:MapWidget
+Set_Maze	MazeWindow.cpp	/^Set_Maze(Maze *m)$/;"	f	class:MazeWindow
+Set_View_Dir	Maze.cpp	/^Set_View_Dir(const float d)$/;"	f	class:Maze
+Set_View_FOV	Maze.cpp	/^Set_View_FOV(const float f)$/;"	f	class:Maze
+Set_View_Posn	Maze.cpp	/^Set_View_Posn(float x, float y, float z)$/;"	f	class:Maze
+Timeout_Callback	RunMaze.cpp	/^static void Timeout_Callback(void *data)$/;"	f	file:
+To_Degrees	Maze.h	/^		static double   To_Degrees(double rad) { return rad * 180.0 \/ M_PI; };$/;"	f	class:Maze
+To_Radians	Maze.h	/^		static double   To_Radians(double deg) { return deg \/ 180.0 * M_PI; };$/;"	f	class:Maze
+Undraw_Frustum	MapWidget.cpp	/^Undraw_Frustum(void)$/;"	f	class:MapWidget
+Update	MazeWindow.cpp	/^Update(float dt)$/;"	f	class:MazeWindow
+Vector3	Vector3.h	/^	Vector3() {}$/;"	f	class:Vector3
+Vector3	Vector3.h	/^	Vector3(const Vector3 &a) : x(a.x), y(a.y), z(a.z) {}$/;"	f	class:Vector3
+Vector3	Vector3.h	/^	Vector3(float nx, float ny, float nz) : x(nx), y(ny), z(nz) {}$/;"	f	class:Vector3
+Vector3	Vector3.h	/^class Vector3$/;"	c
+Vertex	Vertex.cpp	/^Vertex(int i, float x, float y)$/;"	f	class:Vertex
+Vertex	Vertex.h	/^class Vertex {$/;"	c
+WINDOW_H	BuildMaze.cpp	/^static const int    WINDOW_H	= 800;$/;"	v	file:
+WINDOW_W	BuildMaze.cpp	/^static const int    WINDOW_W	= 800;$/;"	v	file:
+X	Maze.cpp	/^const char Maze::X = 0;$/;"	m	class:Maze	file:
+X	Maze.h	/^		static const char	X; \/\/ Used to index into the viewer's position$/;"	m	class:Maze
+X	Vertex.cpp	/^const char  Vertex::X = 0;$/;"	m	class:Vertex	file:
+X	Vertex.h	/^		static const char X;$/;"	m	class:Vertex
+Y	Maze.cpp	/^const char Maze::Y = 1;$/;"	m	class:Maze	file:
+Y	Maze.h	/^		static const char	Y;$/;"	m	class:Maze
+Y	Vertex.cpp	/^const char  Vertex::Y = 1;$/;"	m	class:Vertex	file:
+Y	Vertex.h	/^		static const char	Y;$/;"	m	class:Vertex
+Z	Maze.cpp	/^const char Maze::Z = 2;$/;"	m	class:Maze	file:
+Z	Maze.h	/^		static const char	Z;$/;"	m	class:Maze
+_CELL_H_	Cell.h	19;"	d
+_EDGE_H_	Edge.h	18;"	d
+_LINESEG_H_	LineSeg.h	19;"	d
+_MAPWIDGET_H_	MapWidget.h	20;"	d
+_MAZEWINDOW_H_	MazeWindow.h	21;"	d
+_MAZE_H_	Maze.h	20;"	d
+_POINT_H_	Point.h	20;"	d
+_VERTEX_H_	Vertex.h	20;"	d
+cells	Maze.h	/^		Cell		**cells;       \/\/ An array of pointers to the cells.$/;"	m	class:Maze
+color	Edge.h	/^    float	color[3]; \/\/ The color for this edge \/ wall.$/;"	m	class:Edge
+counter	Cell.h	/^    unsigned int    counter;	\/\/ Used in building a maze. It is reset to$/;"	m	class:Cell
+crossProduct	Vector3.h	/^inline Vector3 crossProduct(const Vector3 &a, const Vector3 &b) $/;"	f
+d_down	MazeWindow.h	/^		float   d_down;\/\/ The view direction when the mouse button was pushed$/;"	m	class:MazeWindow
+distance	Vector3.h	/^inline float distance(const Vector3 &a, const Vector3 &b) {$/;"	f
+down	MazeWindow.h	/^		bool  down;		\/\/ True if the mouse button is down, false otherwise.$/;"	m	class:MazeWindow
+draw	MapWidget.cpp	/^draw(void)$/;"	f	class:MapWidget
+draw	MazeWindow.cpp	/^draw(void)$/;"	f	class:MazeWindow
+edges	Cell.h	/^    Edge		*edges[4];  \/\/ Pointers to the edges of the cell.$/;"	m	class:Cell
+edges	Maze.h	/^		Edge		**edges;			\/\/ An array of pointers to the edges.$/;"	m	class:Maze
+end	LineSeg.h	/^		float   end[2];	\/\/ Ending point, x and y.$/;"	m	class:LineSeg
+endpoints	Edge.h	/^		Vertex		*endpoints[2]; 	\/\/ The vertices at each end, indexed by$/;"	m	class:Edge
+frame_num	Maze.h	/^		unsigned int    frame_num;	\/\/ The frame number we are currently drawing.$/;"	m	class:Maze
+frame_time	RunMaze.cpp	/^static const float  frame_time = 0.05f;$/;"	v	file:
+handle	MazeWindow.cpp	/^handle(int event)$/;"	f	class:MazeWindow
+index	Cell.h	/^    int		index;		\/\/ The index of this cell (just an identifier).$/;"	m	class:Cell
+index	Edge.h	/^		int			index;				\/\/ An identifier$/;"	m	class:Edge
+index	Vertex.h	/^		int	  index;		\/\/ An identifier$/;"	m	class:Vertex
+main	BuildMaze.cpp	/^int main(int argc, char *argv[])$/;"	f
+main	RunMaze.cpp	/^int main(int argc, char *argv[])$/;"	f
+map_window	BuildMaze.cpp	/^static MapWidget    *map_window;$/;"	v	file:
+map_window	RunMaze.cpp	/^static MapWidget    *map_window;  \/\/ The window with the map of the maze in it.$/;"	v	file:
+max_xp	Maze.h	/^		float	max_xp;	\/\/ The maximum x location of any vertex in the maze.$/;"	m	class:Maze
+max_yp	Maze.h	/^		float	max_yp;	\/\/ The maximum y location of any vertex in the maze.$/;"	m	class:Maze
+maze	BuildMaze.cpp	/^static Maze         *maze = NULL;$/;"	v	file:
+maze	MapWidget.h	/^		Maze	*maze;	\/\/ The maze to display$/;"	m	class:MapWidget
+maze	MazeWindow.h	/^		Maze	*maze;	\/\/ The maze to work with$/;"	m	class:MazeWindow
+maze	RunMaze.cpp	/^static Maze         *maze = NULL; \/\/ The maze.$/;"	v	file:
+maze_window	RunMaze.cpp	/^static MazeWindow   *maze_window; \/\/ The window with the 3d view in it.$/;"	v	file:
+message	Maze.h	/^		char    *message;$/;"	m	class:MazeException
+min_xp	Maze.h	/^		float	min_xp;	\/\/ The minimum x location of any vertex in the maze.$/;"	m	class:Maze
+min_yp	Maze.h	/^		float	min_yp;	\/\/ The minimum y location of any vertex in the maze.$/;"	m	class:Maze
+neighbors	Edge.h	/^		class Cell		*neighbors[2];	\/\/ The cells that this edge lies$/;"	m	class:Edge	typeref:class:Edge::Cell
+normalize	Vector3.h	/^	void normalize() $/;"	f	class:Vector3
+num_cells	Maze.h	/^		int		num_cells;     \/\/ The number of cells in the maze$/;"	m	class:Maze
+num_edges	Maze.h	/^		int		num_edges;		\/\/ The number of edges in the maze.$/;"	m	class:Maze
+num_vertices	Maze.h	/^		int		num_vertices;	\/\/ The number of vertices in the maze$/;"	m	class:Maze
+nx_counter	BuildMaze.cpp	/^static Fl_Counter   *nx_counter;$/;"	v	file:
+ny_counter	BuildMaze.cpp	/^static Fl_Counter   *ny_counter;$/;"	v	file:
+opaque	Edge.h	/^    bool		opaque;	\/\/ True is this edge cannot be seen or$/;"	m	class:Edge
+operator !=	Point.h	/^		bool    operator!=(const Point &other) {$/;"	f	class:Point
+operator !=	Vector3.h	/^	bool operator !=(const Vector3 &a) const $/;"	f	class:Vector3
+operator *	Vector3.h	/^	Vector3 operator *(float a) const $/;"	f	class:Vector3
+operator *	Vector3.h	/^	float operator *(const Vector3 &a) const $/;"	f	class:Vector3
+operator *	Vector3.h	/^inline Vector3 operator *(float k, const Vector3 &v) {$/;"	f
+operator *=	Vector3.h	/^	Vector3 &operator *=(float a) $/;"	f	class:Vector3
+operator +	Vector3.h	/^	Vector3 operator +(const Vector3 &a) const $/;"	f	class:Vector3
+operator +=	Vector3.h	/^	Vector3 &operator +=(const Vector3 &a) $/;"	f	class:Vector3
+operator -	Vector3.h	/^	Vector3 operator -() const { return Vector3(-x,-y,-z); }$/;"	f	class:Vector3
+operator -	Vector3.h	/^	Vector3 operator -(const Vector3 &a) const $/;"	f	class:Vector3
+operator -=	Vector3.h	/^	Vector3 &operator -=(const Vector3 &a) $/;"	f	class:Vector3
+operator /	Vector3.h	/^	Vector3 operator \/(float a) const $/;"	f	class:Vector3
+operator /=	Vector3.h	/^	Vector3 &operator \/=(float a) $/;"	f	class:Vector3
+operator =	Point.h	/^		Point&  operator=(const Point &p_in) {$/;"	f	class:Point
+operator =	Vector3.h	/^	Vector3 &operator =(const Vector3 &a) {$/;"	f	class:Vector3
+operator ==	Point.h	/^		bool    operator==(const Point &other) {$/;"	f	class:Point
+operator ==	Vector3.h	/^	bool operator ==(const Vector3 &a) const $/;"	f	class:Vector3
+operator []	Point.h	/^		float&  operator[](const int i) { return p[i]; }$/;"	f	class:Point
+p	Point.h	/^    float   p[3];$/;"	m	class:Point
+posn	Vertex.h	/^		float   posn[2];	\/\/ The location (x and y)$/;"	m	class:Vertex
+start	LineSeg.h	/^		float   start[2];	\/\/ Starting point, x and y.$/;"	m	class:LineSeg
+sx_counter	BuildMaze.cpp	/^static Fl_Counter   *sx_counter;$/;"	v	file:
+sy_counter	BuildMaze.cpp	/^static Fl_Counter   *sy_counter;$/;"	v	file:
+vd_counter	BuildMaze.cpp	/^static Fl_Counter   *vd_counter;$/;"	v	file:
+vectorMag	Vector3.h	/^inline float vectorMag(const Vector3 &a) $/;"	f
+vertices	Maze.h	/^		Vertex	**vertices;		\/\/ An array of pointers to the vertices.$/;"	m	class:Maze
+vf_counter	BuildMaze.cpp	/^static Fl_Counter   *vf_counter;$/;"	v	file:
+view_cell	Maze.h	/^		Cell				*view_cell;\/\/ The cell that currently contains the view$/;"	m	class:Maze
+viewer_dir	Maze.h	/^		float		viewer_dir;			\/\/ The direction in which the viewer is$/;"	m	class:Maze
+viewer_fov	Maze.h	/^		float		viewer_fov;			\/\/ The horizontal field of view, in degrees.$/;"	m	class:Maze
+viewer_posn	Maze.h	/^		float		viewer_posn[3];	\/\/ The x,y location of the viewer.$/;"	m	class:Maze
+vx_counter	BuildMaze.cpp	/^static Fl_Counter   *vx_counter;$/;"	v	file:
+vy_counter	BuildMaze.cpp	/^static Fl_Counter   *vy_counter;$/;"	v	file:
+vz_counter	BuildMaze.cpp	/^static Fl_Counter   *vz_counter;$/;"	v	file:
+x	Vector3.h	/^	float x,y,z;$/;"	m	class:Vector3
+x_down	MazeWindow.h	/^		int	x_down;	\/\/ The location of the mouse when the button was pushed$/;"	m	class:MazeWindow
+x_last	MazeWindow.h	/^		int	x_last;	\/\/ The location of the most recent mouse event$/;"	m	class:MazeWindow
+y	Vector3.h	/^	float x,y,z;$/;"	m	class:Vector3
+y_down	MazeWindow.h	/^		int	y_down;$/;"	m	class:MazeWindow
+y_last	MazeWindow.h	/^		int	y_last;$/;"	m	class:MazeWindow
+z	Vector3.h	/^	float x,y,z;$/;"	m	class:Vector3
+z_key	MazeWindow.h	/^		int   z_key;	\/\/ Whether the key to move the viewer up or down was$/;"	m	class:MazeWindow
+zero	Vector3.h	/^	void zero() { x = y = z = 0.0f; }$/;"	f	class:Vector3
+~Maze	Maze.cpp	/^~Maze(void)$/;"	f	class:Maze
+~MazeException	Maze.h	/^		~MazeException() { delete message; };$/;"	f	class:MazeException

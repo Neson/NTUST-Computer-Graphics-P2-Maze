@@ -1,0 +1,638 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"FL",
+				"FLTK"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "BuildMaze.cpp",
+			"settings":
+			{
+				"buffer_size": 7154,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Cell.cpp",
+			"settings":
+			{
+				"buffer_size": 4283,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "MapWidget.cpp",
+			"settings":
+			{
+				"buffer_size": 4161,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "MapWidget.h",
+			"settings":
+			{
+				"buffer_size": 1262,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "MazeWindow.cpp",
+			"settings":
+			{
+				"buffer_size": 6378,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "MazeWindow.h",
+			"settings":
+			{
+				"buffer_size": 2029,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Makefile",
+			"settings":
+			{
+				"buffer_size": 796,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "RunMaze.cpp",
+			"settings":
+			{
+				"buffer_size": 4384,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Maze.cpp",
+			"settings":
+			{
+				"buffer_size": 25256,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/home/yukai/Project2/example.c",
+			"settings":
+			{
+				"buffer_size": 620,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 81.0,
+		"selected_items":
+		[
+			[
+				"c+",
+				"Set Syntax: C++"
+			],
+			[
+				"gl",
+				"Set Syntax: GLSL"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"inpu",
+				"InputHelper"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"makef",
+				"Set Syntax: Makefile"
+			],
+			[
+				"preview",
+				"Markdown Preview: Python Markdown: Preview in Browser"
+			],
+			[
+				"mark",
+				"Set Syntax: Markdown"
+			],
+			[
+				"ss mar",
+				"Set Syntax: MultiMarkdown"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: li",
+				"Package Control: List Packages"
+			],
+			[
+				"ss bash",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"bas",
+				"Bookmarks: Select All"
+			]
+		],
+		"width": 562.0
+	},
+	"console":
+	{
+		"height": 181.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"sudo apt-get install build-essential mercurial make cmake autoconf automake \\"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/yukai/Project2/Maze/Edge.cpp",
+		"/home/yukai/Project2/Maze/Maze.sublime-workspace",
+		"/home/yukai/Project2/Maze/MazeWindow.o",
+		"/home/yukai/Project2/Maze/Point.h",
+		"/home/yukai/Project2/Maze/ReadMe.txt",
+		"/home/yukai/Project2/Maze/RunMaze.o",
+		"/home/yukai/Project2/Maze/Vector3.h",
+		"/home/yukai/Project2/Maze/Vertex.cpp",
+		"/home/yukai/Project2/Maze/Vertex.h",
+		"/home/yukai/Project2/Maze/Vertex.o",
+		"/home/yukai/Project2/Maze/buildmaze",
+		"/home/yukai/Project2/Maze/maze-10x10-100",
+		"/home/yukai/Project2/Maze/maze-10x10-50",
+		"/home/yukai/Project2/Maze/maze-1x1-100",
+		"/home/yukai/Project2/Maze/maze-1x1-45",
+		"/home/yukai/Project2/Maze/Maze.sublime-project",
+		"/home/yukai/Project2/Maze/Maze.o",
+		"/home/yukai/Project2/Maze/Maze.h",
+		"/home/yukai/Project2/Maze/MapWidget.o",
+		"/home/yukai/Project2/Maze/LineSeg.o",
+		"/home/yukai/Project2/Maze/LineSeg.h",
+		"/home/yukai/Project2/Maze/LineSeg.cpp",
+		"/home/yukai/Project2/Maze/Edge.o",
+		"/home/yukai/Project2/Maze/Edge.h",
+		"/home/yukai/Project2/Maze/Cell.o",
+		"/home/yukai/Project2/Maze/Cell.h",
+		"/home/yukai/Project2/Maze/BuildMaze.o",
+		"/home/yukai/Project2/example.c",
+		"/home/yukai/.config/sublime-text-3/Packages/CTags/CTags.sublime-settings",
+		"/home/yukai/.config/sublime-text-3/Packages/CTags/Default.sublime-keymap",
+		"/home/yukai/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/yukai/.oh-my-zsh/themes/neson.zsh-theme",
+		"/home/yukai/下載/ogre_src_v1-8-1/README"
+	],
+	"find":
+	{
+		"height": 31.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"l/",
+			"l",
+			"h",
+			"cxxflags",
+			"CXXFLAGS",
+			"LIB",
+			"lib",
+			"LIB",
+			"CPPFLAGS",
+			"l/",
+			"Fl/",
+			"FL/"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 8,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "BuildMaze.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7154,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								648,
+								648
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3151.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Cell.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4283,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								549,
+								549
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "MapWidget.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4161,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								672,
+								672
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "MapWidget.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1262,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								641,
+								641
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "MazeWindow.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6378,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								916,
+								906
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 392.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "MazeWindow.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2029,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								953,
+								953
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 323.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "Makefile",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 796,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								796,
+								796
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Makefile/Makefile.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "RunMaze.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4384,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								818,
+								818
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 276.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "Maze.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 25256,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								18806,
+								18806
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 14158.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/home/yukai/Project2/example.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 620,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								318,
+								318
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 31.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 150.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "Maze.sublime-project",
+	"replace":
+	{
+		"height": 74.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"ed",
+				"Edge.cpp"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
