@@ -28,8 +28,8 @@ class Vertex {
 		// Index constant for x, y
 		static const char X;
 		static const char Y;
-		int	  index;		// An identifier
-		float   posn[2];	// The location (x and y)
+		int	  index;	// An identifier
+		float posn[2];	// The location (x and y)
 
 };
 

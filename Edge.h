@@ -51,7 +51,7 @@ class Edge {
 		// for a discussion of which side is left and which is right.
 		char	Point_Side(float x, float y);
 
-  public:
+  	public:
 		// Constants.
 		// To access these outside the edge class, use Edge::LEFT etc.
 		static const char	LEFT;
