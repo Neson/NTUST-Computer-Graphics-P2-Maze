@@ -25,6 +25,10 @@
 #include <FL/Fl.H>
 #include <FL/fl_draw.H>
 #include "GL/gl.h"
+#include "Vector3.h"
+#include "Matrix.h"
+
+#include <iostream>
 
 const char Maze::X = 0;
 const char Maze::Y = 1;
@@ -638,12 +642,66 @@ Draw_View(const float focal_dist)
 	// The rest is up to you!
 	//###################################################################
 
-	glBegin(GL_TRIANGLES);
-	glColor3f(1.0f, 0.0f, 0.0f);
-	glVertex2f(-100, -50);
-	glVertex2f(100,-50.0f);
-	glVertex2f(100, 50.0f);
-	glEnd();
+	// glBegin(GL_TRIANGLES);
+	// glColor3f(1.0f, 0.0f, 0.0f);
+	// glVertex2f(-100, -50);
+	// glVertex2f(100,-50.0f);
+	// glVertex2f(100, 50.0f);
+	// glEnd();
+
+	Vector3 dir_gaze(cos(To_Radians(viewer_dir)), 0, sin(To_Radians(viewer_dir)));
+	Vector3 w(-dir_gaze.x, 0, -dir_gaze.z);
+	Vector3 v(0, 1, 0);
+	Vector3 u = crossProduct(v, dir_gaze);
+	Vector3 pos_eye(viewer_posn[0],   0,   viewer_posn[1]);
+
+	float viewMatrix[4][4] = 
+	{
+		// M(world to view)
+		// use u, v, w, e, to build this matrix
+		{u.x, u.y, u.z, (-u) * pos_eye},
+		{v.x, v.y, v.z, (-v) * pos_eye},
+		{w.x, w.y, w.z, (-w) * pos_eye},
+		{  0,   0,   0,  1}
+	};
+
+	float viewToScreen[4][4] = 
+	{
+		// the position of the wall in world
+		{   1,    0,            0,    0},
+		{   0,    1,            0,    0},
+		{   0,    0,            1,    0},
+		{   0,    0, 1/focal_dist,    0}
+	};
+
+	float oriPos[4][1] = 
+	{
+		{pos_eye.x,},
+		{pos_eye.y,},
+		{pos_eye.z,},
+		{pos_eye.z/focal_dist}
+	};
+
+	float combination[4][4];
+
+
+	mulMatrix444(viewToScreen, viewMatrix, combination, 4, 4, 4);
+
+	float screenPos[4][1];
+	mulMatrix441(combination, oriPos, screenPos, 4, 4, 1);
+
+	// std::cout << "x = " << screenPos[0]
+	// 		  << " y = " << screenPos[1]
+	// 		  << " z = " << screenPos[2] << std::endl;
+
+	// Vertex Ps[4] = 
+	// {
+	// 	// V = viewMatrix * Pv
+	// 	// Ps = M(view to screen) * V
+
+	// };
+
+
 }
 
 

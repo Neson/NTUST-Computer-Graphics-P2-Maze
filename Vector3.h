@@ -3,6 +3,9 @@
 // class Vector3 -- a simple 3D vector class
 //
 /////////////////////////////////////////////////////////////////////////////
+#pragma once
+
+
 class Vector3
 {
 public:
@@ -115,6 +118,11 @@ public:
 	float operator *(const Vector3 &a) const 
 	{
 		return x*a.x + y*a.y + z*a.z;
+	}
+
+	float magnitude()
+	{
+		return sqrt(x*x + y*y + z*z);
 	}
 };
 

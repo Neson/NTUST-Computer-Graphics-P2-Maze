@@ -1,7 +1,8 @@
 CC=g++
 
 # INCLUDE=-I/usr/local/include -I/s/fltk/include `fltk-config --cxxflags`
-CPPFLAGS=-g -Wall $(shell fltk-config --use-gl --use-images --cxxflags) -I. -lGL -lGLU 
+CPPFLAGS=-g $(shell fltk-config --use-gl --use-images --cxxflags) -I. -lGL -lGLU 
+# if you want to all warning flags add "-Wall" flag
 
 # LIB=-L/usr/local/lib -L/usr/lib  -lGL -lGLU 
 # LDFLAGS=$(LIB)
