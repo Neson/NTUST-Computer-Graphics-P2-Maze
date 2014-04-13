@@ -651,9 +651,34 @@ Draw_View(const float focal_dist)
 	// glEnd();
 
 	Vector3 dir_gaze(cos(To_Radians(viewer_dir)), 0, sin(To_Radians(viewer_dir)));
+	
+	Vector3 dir_gazeleft(cos(To_Radians(viewer_dir + viewer_fov/2.0)), 0, sin(To_Radians(viewer_dir + viewer_fov/2.0)));
+	Vector3 dir_gazeright(cos(To_Radians(viewer_dir - viewer_fov/2.0)), 0, sin(To_Radians(viewer_dir - viewer_fov/2.0)));
+
+	// {
+	// 	std::cout << "dir gaze: ";
+	// 	std::cout << "x = " << dir_gaze.x
+	// 			  << " y = " << dir_gaze.y
+	// 			  << " z = " << dir_gaze.z << std::endl;	
+
+	// 	std::cout << "dir gazeleft: ";
+	// 	std::cout << "x = " << dir_gazeleft.x
+	// 			  << " y = " << dir_gazeleft.y
+	// 			  << " z = " << dir_gazeleft.z << std::endl;	
+
+	// 	std::cout << "dir gazeright: ";
+	// 	std::cout << "x = " << dir_gazeright.x
+	// 			  << " y = " << dir_gazeright.y
+	// 			  << " z = " << dir_gazeright.z << std::endl << std::endl;	
+	// }
+
 	Vector3 w(-dir_gaze.x, 0, -dir_gaze.z);
 	Vector3 v(0, 1, 0);
+
+	// remember to check the direction of cross vector
+	// not done yet
 	Vector3 u = crossProduct(v, dir_gaze);
+
 	Vector3 pos_eye(viewer_posn[0],   0,   viewer_posn[1]);
 
 	float viewMatrix[4][4] = 
@@ -730,6 +755,11 @@ Draw_View(const float focal_dist)
 	// 	// Ps = M(view to screen) * V
 
 	// };
+
+	// for (int i = 0; i < num_cells; i++)
+	// {
+	// 	cells[i]
+	// }
 
 
 }
