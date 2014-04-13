@@ -29,6 +29,7 @@
 #include "Matrix.h"
 
 #include <iostream>
+#include <iomanip>    
 
 const char Maze::X = 0;
 const char Maze::Y = 1;
@@ -665,13 +666,24 @@ Draw_View(const float focal_dist)
 		{  0,   0,   0,  1}
 	};
 
+	// std::cout << "viewMatrix:" << std::endl;
+	// for(int i = 0; i < 4; i++)
+	// {
+	// 	for(int j = 0; j < 4; j++)
+	// 	{
+	// 		std::cout << std::setiosflags(std::ios::fixed) << std::setw(10) << viewMatrix[i][j] << " ";
+	// 	}
+	// 	std::cout << std::endl;
+	// }
+	// std::cout << std::endl << std::endl;	
+
 	float viewToScreen[4][4] = 
 	{
 		// the position of the wall in world
-		{   1,    0,            0,    0},
-		{   0,    1,            0,    0},
-		{   0,    0,            1,    0},
-		{   0,    0, 1/focal_dist,    0}
+		{   1,    0,              0,    0},
+		{   0,    1,              0,    0},
+		{   0,    0,              1,    0},
+		{   0,    0, 1.0/focal_dist,    0}
 	};
 
 	float oriPos[4][1] = 
@@ -682,17 +694,35 @@ Draw_View(const float focal_dist)
 		{pos_eye.z/focal_dist}
 	};
 
-	float combination[4][4];
+	float combination[4][4] = {0};
 
 
 	mulMatrix444(viewToScreen, viewMatrix, combination, 4, 4, 4);
 
-	float screenPos[4][1];
+
+	// std::cout << "world to screen matrix:" << std::endl;
+	// for(int i = 0; i < 4; i++)
+	// {
+	// 	for(int j = 0; j < 4; j++)
+	// 	{
+	// 		std::cout << std::setiosflags(std::ios::fixed) << std::setw(10) << combination[i][j] << " ";
+	// 	}
+	// 	std::cout << std::endl;
+	// }
+	// std::cout << std::endl << std::endl;
+
+	float screenPos[4][1] = {0};
 	mulMatrix441(combination, oriPos, screenPos, 4, 4, 1);
 
-	// std::cout << "x = " << screenPos[0]
-	// 		  << " y = " << screenPos[1]
-	// 		  << " z = " << screenPos[2] << std::endl;
+	
+	// std::cout << std::setw(10) << "x = " << screenPos[0][0]
+	// 		  << std::setw(10) << " y = " << screenPos[1][0]
+	// 		  << std::setw(10) << " z = " << screenPos[2][0] << std::endl;
+
+	// std::cout << "eye position: ";
+	// std::cout << "x = " << pos_eye.x
+	// 		  << " y = " << pos_eye.y
+	// 		  << " z = " << pos_eye.z << std::endl;	
 
 	// Vertex Ps[4] = 
 	// {
