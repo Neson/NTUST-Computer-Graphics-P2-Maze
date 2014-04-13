@@ -11,10 +11,10 @@ LDFLAGS = $(shell fltk-config --use-gl --use-images --ldflags)
 
 # -L/p/graphics/local/packages/fltk-1.0.11/lib -L/usr/X11R6/lib
 
-SRC=Cell.cpp Edge.cpp LineSeg.cpp MapWidget.cpp Maze.cpp MazeWindow.cpp RunMaze.cpp Vertex.cpp
+SRC=Cell.cpp Edge.cpp LineSeg.cpp MapWidget.cpp Maze.cpp MazeWindow.cpp RunMaze.cpp Vertex.cpp Matrix.cpp 
 OBJS=$(SRC:.cpp=.o)
 
-BUILDSRC=Cell.cpp Edge.cpp LineSeg.cpp MapWidget.cpp Maze.cpp MazeWindow.cpp BuildMaze.cpp Vertex.cpp
+BUILDSRC=Cell.cpp Edge.cpp LineSeg.cpp MapWidget.cpp Maze.cpp MazeWindow.cpp BuildMaze.cpp Vertex.cpp Matrix.cpp
 BUILDOBJS=$(BUILDSRC:.cpp=.o)
 
 runmaze: $(OBJS)

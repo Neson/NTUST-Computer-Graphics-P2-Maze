@@ -26,7 +26,8 @@
 #include <FL/fl_draw.H>
 #include "GL/gl.h"
 #include "Vector3.h"
-#include "Matrix.h"
+#include "Matrix.h" 
+#include "LineSeg.h"     
 
 #include <iostream>
 #include <iomanip>    
@@ -651,35 +652,40 @@ Draw_View(const float focal_dist)
 	// glEnd();
 
 	Vector3 dir_gaze(cos(To_Radians(viewer_dir)), 0, sin(To_Radians(viewer_dir)));
-	
-	Vector3 dir_gazeleft(cos(To_Radians(viewer_dir + viewer_fov/2.0)), 0, sin(To_Radians(viewer_dir + viewer_fov/2.0)));
+	Vector3 dir_gazeleft (cos(To_Radians(viewer_dir + viewer_fov/2.0)), 0, sin(To_Radians(viewer_dir + viewer_fov/2.0)));
 	Vector3 dir_gazeright(cos(To_Radians(viewer_dir - viewer_fov/2.0)), 0, sin(To_Radians(viewer_dir - viewer_fov/2.0)));
 
-	// {
-	// 	std::cout << "dir gaze: ";
-	// 	std::cout << "x = " << dir_gaze.x
-	// 			  << " y = " << dir_gaze.y
-	// 			  << " z = " << dir_gaze.z << std::endl;	
+	{
+		// std::cout << "dir gaze: ";
+		// std::cout << "x = " << dir_gaze.x
+		// 		  << " y = " << dir_gaze.y
+		// 		  << " z = " << dir_gaze.z << std::endl;	
 
-	// 	std::cout << "dir gazeleft: ";
-	// 	std::cout << "x = " << dir_gazeleft.x
-	// 			  << " y = " << dir_gazeleft.y
-	// 			  << " z = " << dir_gazeleft.z << std::endl;	
+		// std::cout << "dir gazeleft: ";
+		// std::cout << "x = " << dir_gazeleft.x
+		// 		  << " y = " << dir_gazeleft.y
+		// 		  << " z = " << dir_gazeleft.z << std::endl;	
 
-	// 	std::cout << "dir gazeright: ";
-	// 	std::cout << "x = " << dir_gazeright.x
-	// 			  << " y = " << dir_gazeright.y
-	// 			  << " z = " << dir_gazeright.z << std::endl << std::endl;	
-	// }
+		// std::cout << "dir gazeright: ";
+		// std::cout << "x = " << dir_gazeright.x
+		// 		  << " y = " << dir_gazeright.y
+		// 		  << " z = " << dir_gazeright.z << std::endl << std::endl;	
+	}
 
 	Vector3 w(-dir_gaze.x, 0, -dir_gaze.z);
 	Vector3 v(0, 1, 0);
 
-	// remember to check the direction of cross vector
-	// not done yet
+	// by right-hand theory
 	Vector3 u = crossProduct(v, dir_gaze);
 
-	Vector3 pos_eye(viewer_posn[0],   0,   viewer_posn[1]);
+	Vector3 pos_eye(viewer_posn[X],   0,   viewer_posn[Y]);
+
+	LineSeg line_gazeleft (pos_eye, 50000*dir_gazeleft);
+	LineSeg line_gazeright(pos_eye, 50000*dir_gazeright);
+
+	printVector3(pos_eye);
+	printLineSeg(line_gazeleft);
+	printLineSeg(line_gazeright);
 
 	float viewMatrix[4][4] = 
 	{
@@ -691,16 +697,18 @@ Draw_View(const float focal_dist)
 		{  0,   0,   0,  1}
 	};
 
-	// std::cout << "viewMatrix:" << std::endl;
-	// for(int i = 0; i < 4; i++)
-	// {
-	// 	for(int j = 0; j < 4; j++)
-	// 	{
-	// 		std::cout << std::setiosflags(std::ios::fixed) << std::setw(10) << viewMatrix[i][j] << " ";
-	// 	}
-	// 	std::cout << std::endl;
-	// }
-	// std::cout << std::endl << std::endl;	
+	{
+		// std::cout << "viewMatrix:" << std::endl;
+		// for(int i = 0; i < 4; i++)
+		// {
+		// 	for(int j = 0; j < 4; j++)
+		// 	{
+		// 		std::cout << std::setiosflags(std::ios::fixed) << std::setw(10) << viewMatrix[i][j] << " ";
+		// 	}
+		// 	std::cout << std::endl;
+		// }
+		// std::cout << std::endl << std::endl;	
+	}
 
 	float viewToScreen[4][4] = 
 	{
@@ -719,35 +727,132 @@ Draw_View(const float focal_dist)
 		{pos_eye.z/focal_dist}
 	};
 
-	float combination[4][4] = {0};
-
-
-	mulMatrix444(viewToScreen, viewMatrix, combination, 4, 4, 4);
-
-
-	// std::cout << "world to screen matrix:" << std::endl;
-	// for(int i = 0; i < 4; i++)
-	// {
-	// 	for(int j = 0; j < 4; j++)
-	// 	{
-	// 		std::cout << std::setiosflags(std::ios::fixed) << std::setw(10) << combination[i][j] << " ";
-	// 	}
-	// 	std::cout << std::endl;
-	// }
-	// std::cout << std::endl << std::endl;
+	float worldToScreen[4][4] = {0};
+	mulMatrix444(viewToScreen, viewMatrix, worldToScreen);
 
 	float screenPos[4][1] = {0};
-	mulMatrix441(combination, oriPos, screenPos, 4, 4, 1);
+	//mulMatrix441(worldToScreen, oriPos, screenPos);
 
-	
-	// std::cout << std::setw(10) << "x = " << screenPos[0][0]
-	// 		  << std::setw(10) << " y = " << screenPos[1][0]
-	// 		  << std::setw(10) << " z = " << screenPos[2][0] << std::endl;
+	float height = 1.0;
+	for (int i = 0; i < num_cells; i++)
+	{
+		for(int j = 0; j < 4; j++)
+		{
+			Edge *e = cells[i]->edges[j];
+			LineSeg line_edge(e);
+			// std::cout << "line_edge" << j << ":";
+			// printLineSeg(line_edge);
 
-	// std::cout << "eye position: ";
-	// std::cout << "x = " << pos_eye.x
-	// 		  << " y = " << pos_eye.y
-	// 		  << " z = " << pos_eye.z << std::endl;	
+			float xl1 = line_edge.Cross_Param(line_gazeleft);
+			float xl2 = line_gazeleft.Cross_Param(line_edge);
+
+			float xr1 = line_edge.Cross_Param(line_gazeright);
+			float xr2 = line_gazeright.Cross_Param(line_edge);
+
+			// std::cout << "xl1 = " << xl1 << " xl2 = " << xl2 
+			// 		 << " xr1 = " << xr1 << " xr2 = " << xr2 << std::endl;
+
+			if(inside(xl1) && inside(xl2) && inside(xr1) && inside(xr2))
+			{
+				std::cout << "case 1!" << std::endl;
+				float pos_edge1[4][1] = 
+				{
+					{e->endpoints[Edge::START]->posn[Vertex::X]},
+					{height},
+					{e->endpoints[Edge::START]->posn[Vertex::Y]},
+					{e->endpoints[Edge::START]->posn[Vertex::Y]/focal_dist}
+				};
+				float pos_edge2[4][1] = 
+				{
+					{e->endpoints[Edge::START]->posn[Vertex::X]},
+					{-height},
+					{e->endpoints[Edge::START]->posn[Vertex::Y]},
+					{e->endpoints[Edge::START]->posn[Vertex::Y]/focal_dist}
+				};
+				float pos_edge3[4][1] = 
+				{
+					{e->endpoints[Edge::END]->posn[Vertex::X]},
+					{-height},
+					{e->endpoints[Edge::END]->posn[Vertex::Y]},
+					{e->endpoints[Edge::END]->posn[Vertex::Y]/focal_dist}
+				};
+				float pos_edge4[4][1] = 
+				{
+					{e->endpoints[Edge::END]->posn[Vertex::X]},
+					{-height},
+					{e->endpoints[Edge::END]->posn[Vertex::Y]},
+					{e->endpoints[Edge::END]->posn[Vertex::Y]/focal_dist}
+				};
+
+				float pos_edge_screen1[4][1];				
+				float pos_edge_screen2[4][1];
+				float pos_edge_screen3[4][1];
+				float pos_edge_screen4[4][1];
+				
+				mulMatrix441(worldToScreen, pos_edge1, pos_edge_screen1);
+				mulMatrix441(worldToScreen, pos_edge2, pos_edge_screen2);
+				mulMatrix441(worldToScreen, pos_edge3, pos_edge_screen3);
+				mulMatrix441(worldToScreen, pos_edge4, pos_edge_screen4);
+
+				glBegin(GL_QUADS);
+				glColor3f(e->color[0] * 255.0f,
+						  e->color[1] * 255.0f,
+						  e->color[2] * 255.0f);
+
+				glVertex2f(pos_edge_screen1[0][1], pos_edge_screen1[3][1]);
+				glVertex2f(pos_edge_screen2[0][1], pos_edge_screen1[3][1]);
+				glVertex2f(pos_edge_screen3[0][1], pos_edge_screen1[3][1]);
+				glVertex2f(pos_edge_screen4[0][1], pos_edge_screen1[3][1]);
+
+				glEnd();
+			}
+			else if (inside(xl1) && !inside(xl2) && inside(xr1) && inside(xr2))
+			{
+
+			}
+			else if (inside(xl1) && inside(xl2) && inside(xr1) && !inside(xr2))
+			{
+
+			}
+			else if (inside(xl1) && !inside(xl2) && inside(xr1) && !inside(xr2))
+			{
+
+			}
+			else if (!inside(xl1) && !inside(xl2) && !inside(xr1) && !inside(xr2))
+			{
+
+			}
+
+			
+		}	
+		std::cout << std::endl;
+	}
+
+
+	{
+		// std::cout << "world to screen matrix:" << std::endl;
+		// for(int i = 0; i < 4; i++)
+		// {
+		// 	for(int j = 0; j < 4; j++)
+		// 	{
+		// 		std::cout << std::setiosflags(std::ios::fixed) << std::setw(10) << combination[i][j] << " ";
+		// 	}
+		// 	std::cout << std::endl;
+		// }
+		// std::cout << std::endl << std::endl;
+	}	
+	{
+		// std::cout << std::setw(10) << "x = " << screenPos[0][0]
+		// 		  << std::setw(10) << " y = " << screenPos[1][0]
+		// 		  << std::setw(10) << " z = " << screenPos[2][0] << std::endl;
+
+		// std::cout << "eye position: ";
+		// std::cout << "x = " << pos_eye.x
+		// 		  << " y = " << pos_eye.y
+		// 		  << " z = " << pos_eye.z << std::endl;	
+	}
+
+
 
 	// Vertex Ps[4] = 
 	// {
@@ -756,10 +861,7 @@ Draw_View(const float focal_dist)
 
 	// };
 
-	// for (int i = 0; i < num_cells; i++)
-	// {
-	// 	cells[i]
-	// }
+
 
 
 }

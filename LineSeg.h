@@ -19,6 +19,7 @@
 #define _LINESEG_H_
 
 #include "Edge.h"
+#include "Vector3.h"     
 
 class LineSeg {
 
@@ -29,6 +30,9 @@ class LineSeg {
 		// Second constructor takes an edge. The LineSeg created has the same
 		// start and end points as the edge.
 		LineSeg(Edge*);
+
+		// Third constructor takes a Vector3. Written by me(who? XDD)
+		LineSeg(Vector3 pt_start, Vector3 v);
 
 	public:
 		// Return the parameter value at which this segment crosses the given

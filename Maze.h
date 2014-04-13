@@ -116,6 +116,8 @@ class Maze {
 		void    Set_Extents(void);
 		void    Find_View_Cell(Cell*);
 
+		void	World_To_Screen_Matrix();
+
 	private:
 		Cell				*view_cell;// The cell that currently contains the view
 										  // point. You will need to use this.

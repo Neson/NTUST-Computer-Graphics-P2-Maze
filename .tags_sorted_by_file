@@ -46,7 +46,7 @@ END	Edge.cpp	/^const char  Edge::END		= 1;$/;"	m	class:Edge	file:
 Edge	Edge.cpp	/^Edge(int i, Vertex *start, Vertex *end, float r, float g, float b)$/;"	f	class:Edge
 LEFT	Edge.cpp	/^const char  Edge::LEFT		= 0;$/;"	m	class:Edge	file:
 NEITHER	Edge.cpp	/^const char  Edge::NEITHER	= 3;$/;"	m	class:Edge	file:
-ON	Edge.cpp	/^const char  Edge::ON			= 2;$/;"	m	class:Edge	file:
+ON	Edge.cpp	/^const char  Edge::ON		= 2;$/;"	m	class:Edge	file:
 Point_Side	Edge.cpp	/^Point_Side(float x, float y)$/;"	f	class:Edge
 RIGHT	Edge.cpp	/^const char  Edge::RIGHT		= 1;$/;"	m	class:Edge	file:
 START	Edge.cpp	/^const char  Edge::START		= 0;$/;"	m	class:Edge	file:
@@ -68,18 +68,19 @@ opaque	Edge.h	/^    bool		opaque;	\/\/ True is this edge cannot be seen or$/;"	m
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 Cross_Param	LineSeg.cpp	/^Cross_Param(LineSeg e)$/;"	f	class:LineSeg
 LineSeg	LineSeg.cpp	/^LineSeg(Edge *e)$/;"	f	class:LineSeg
+LineSeg	LineSeg.cpp	/^LineSeg(Vector3 pt_start, Vector3 v)$/;"	f	class:LineSeg
 LineSeg	LineSeg.cpp	/^LineSeg(float xs, float ys, float xe, float ye)$/;"	f	class:LineSeg
 LineSeg	LineSeg.h	/^class LineSeg {$/;"	c
 _LINESEG_H_	LineSeg.h	19;"	d
 end	LineSeg.h	/^		float   end[2];	\/\/ Ending point, x and y.$/;"	m	class:LineSeg
 start	LineSeg.h	/^		float   start[2];	\/\/ Starting point, x and y.$/;"	m	class:LineSeg
 BUILDOBJS	Makefile	/^BUILDOBJS=$(BUILDSRC:.cpp=.o)$/;"	m
-BUILDSRC	Makefile	/^BUILDSRC=Cell.cpp Edge.cpp LineSeg.cpp MapWidget.cpp Maze.cpp MazeWindow.cpp BuildMaze.cpp Vertex.cpp$/;"	m
+BUILDSRC	Makefile	/^BUILDSRC=Cell.cpp Edge.cpp LineSeg.cpp MapWidget.cpp Maze.cpp MazeWindow.cpp BuildMaze.cpp Vertex.cpp Matrix.cpp$/;"	m
 CC	Makefile	/^CC=g++$/;"	m
-CPPFLAGS	Makefile	/^CPPFLAGS=-g -Wall $(shell fltk-config --use-gl --use-images --cxxflags) -I. -lGL -lGLU $/;"	m
+CPPFLAGS	Makefile	/^CPPFLAGS=-g $(shell fltk-config --use-gl --use-images --cxxflags) -I. -lGL -lGLU $/;"	m
 LDFLAGS	Makefile	/^LDFLAGS = $(shell fltk-config --use-gl --use-images --ldflags)$/;"	m
 OBJS	Makefile	/^OBJS=$(SRC:.cpp=.o)$/;"	m
-SRC	Makefile	/^SRC=Cell.cpp Edge.cpp LineSeg.cpp MapWidget.cpp Maze.cpp MazeWindow.cpp RunMaze.cpp Vertex.cpp$/;"	m
+SRC	Makefile	/^SRC=Cell.cpp Edge.cpp LineSeg.cpp MapWidget.cpp Maze.cpp MazeWindow.cpp RunMaze.cpp Vertex.cpp Matrix.cpp $/;"	m
 Draw_Frustum	MapWidget.cpp	/^Draw_Frustum(void)$/;"	f	class:MapWidget
 MapWidget	MapWidget.cpp	/^MapWidget(int x, int y, int width, int height, char *label, Maze *m)$/;"	f	class:MapWidget
 Set_Maze	MapWidget.cpp	/^Set_Maze(Maze *m)$/;"	f	class:MapWidget
@@ -88,6 +89,15 @@ draw	MapWidget.cpp	/^draw(void)$/;"	f	class:MapWidget
 MapWidget	MapWidget.h	/^class MapWidget : public Fl_Widget {$/;"	c
 _MAPWIDGET_H_	MapWidget.h	20;"	d
 maze	MapWidget.h	/^		Maze	*maze;	\/\/ The maze to display$/;"	m	class:MapWidget
+Matrix	Matrix.h	/^class Matrix$/;"	c
+_MATRIX_H_	Matrix.h	2;"	d
+inside	Matrix.h	/^inline bool inside(int x)$/;"	f
+m	Matrix.h	/^	int m, n;$/;"	m	class:Matrix
+mulMatrix441	Matrix.h	/^inline void mulMatrix441(float a[][4], float b[][1], float c[][1])$/;"	f
+mulMatrix444	Matrix.h	/^inline void mulMatrix444(float a[][4], float b[][4], float c[][4])$/;"	f
+n	Matrix.h	/^	int m, n;$/;"	m	class:Matrix
+printLineSeg	Matrix.h	/^inline void printLineSeg(LineSeg line)$/;"	f
+printVector3	Matrix.h	/^inline void printVector3(Vector3 v)$/;"	f
 Add_To_Available	Maze.cpp	/^Add_To_Available(Cell *cell, int *available, int &num_available)$/;"	f	file:
 BUFFER	Maze.cpp	/^const float Maze::BUFFER = 0.1f;$/;"	m	class:Maze	file:
 Build_Connectivity	Maze.cpp	/^Build_Connectivity(const int num_x, const int num_y,$/;"	f	class:Maze
@@ -182,6 +192,7 @@ Vector3	Vector3.h	/^	Vector3(float nx, float ny, float nz) : x(nx), y(ny), z(nz)
 Vector3	Vector3.h	/^class Vector3$/;"	c
 crossProduct	Vector3.h	/^inline Vector3 crossProduct(const Vector3 &a, const Vector3 &b) $/;"	f
 distance	Vector3.h	/^inline float distance(const Vector3 &a, const Vector3 &b) {$/;"	f
+magnitude	Vector3.h	/^	float magnitude()$/;"	f	class:Vector3
 normalize	Vector3.h	/^	void normalize() $/;"	f	class:Vector3
 operator !=	Vector3.h	/^	bool operator !=(const Vector3 &a) const $/;"	f	class:Vector3
 operator *	Vector3.h	/^	Vector3 operator *(float a) const $/;"	f	class:Vector3
@@ -207,8 +218,8 @@ X	Vertex.cpp	/^const char  Vertex::X = 0;$/;"	m	class:Vertex	file:
 Y	Vertex.cpp	/^const char  Vertex::Y = 1;$/;"	m	class:Vertex	file:
 Vertex	Vertex.h	/^class Vertex {$/;"	c
 X	Vertex.h	/^		static const char X;$/;"	m	class:Vertex
-Y	Vertex.h	/^		static const char	Y;$/;"	m	class:Vertex
+Y	Vertex.h	/^		static const char Y;$/;"	m	class:Vertex
 _VERTEX_H_	Vertex.h	20;"	d
-index	Vertex.h	/^		int	  index;		\/\/ An identifier$/;"	m	class:Vertex
-posn	Vertex.h	/^		float   posn[2];	\/\/ The location (x and y)$/;"	m	class:Vertex
+index	Vertex.h	/^		int	  index;	\/\/ An identifier$/;"	m	class:Vertex
+posn	Vertex.h	/^		float posn[2];	\/\/ The location (x and y)$/;"	m	class:Vertex
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
