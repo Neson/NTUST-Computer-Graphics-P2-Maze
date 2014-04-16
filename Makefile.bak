@@ -1,0 +1,817 @@
+CC=g++
+
+# INCLUDE=-I/usr/local/include -I/s/fltk/include `fltk-config --cxxflags`
+CPPFLAGS=-g -Wall $(shell fltk-config --use-gl --use-images --cxxflags) -I. -lGL -lGLU 
+
+# LIB=-L/usr/local/lib -L/usr/lib  -lGL -lGLU 
+# LDFLAGS=$(LIB)
+LDFLAGS = $(shell fltk-config --use-gl --use-images --ldflags)
+
+
+# -L/p/graphics/local/packages/fltk-1.0.11/lib -L/usr/X11R6/lib
+
+SRC=Cell.cpp Edge.cpp LineSeg.cpp MapWidget.cpp Maze.cpp MazeWindow.cpp RunMaze.cpp Vertex.cpp
+OBJS=$(SRC:.cpp=.o)
+
+BUILDSRC=Cell.cpp Edge.cpp LineSeg.cpp MapWidget.cpp Maze.cpp MazeWindow.cpp BuildMaze.cpp Vertex.cpp
+BUILDOBJS=$(BUILDSRC:.cpp=.o)
+
+runmaze: $(OBJS)
+	g++ -o $@ $(OBJS) $(LDFLAGS)
+
+buildmaze: $(BUILDOBJS)
+	g++ -o $@ $(BUILDOBJS)  $(LDFLAGS)
+
+depend:
+	makedepend -- $(INCLUDE) -- $(SRC) $(BUILDSRC)
+
+clean:
+	rm -r *.o
+
+
+# DO NOT DELETE
+
+Cell.o: /usr/include/stdio.h /usr/include/sys/cdefs.h
+Cell.o: /usr/include/sys/_symbol_aliasing.h
+Cell.o: /usr/include/sys/_posix_availability.h /usr/include/Availability.h
+Cell.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+Cell.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+Cell.o: /usr/include/i386/_types.h /usr/include/sys/_types/_va_list.h
+Cell.o: /usr/include/sys/_types/_size_t.h /usr/include/sys/_types/_null.h
+Cell.o: /usr/include/sys/_types/_off_t.h /usr/include/sys/_types/_ssize_t.h
+Cell.o: /usr/include/secure/_stdio.h /usr/include/secure/_common.h Maze.h
+Cell.o: /usr/include/FL/math.h /usr/include/math.h Cell.h Edge.h Vertex.h
+Cell.o: LineSeg.h /usr/include/FL/gl.h /usr/include/FL/Enumerations.H
+Cell.o: /usr/include/FL/Fl_Export.H /usr/include/FL/fl_types.h
+Cell.o: /usr/include/GL/gl.h
+Edge.o: /usr/include/stdio.h /usr/include/sys/cdefs.h
+Edge.o: /usr/include/sys/_symbol_aliasing.h
+Edge.o: /usr/include/sys/_posix_availability.h /usr/include/Availability.h
+Edge.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+Edge.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+Edge.o: /usr/include/i386/_types.h /usr/include/sys/_types/_va_list.h
+Edge.o: /usr/include/sys/_types/_size_t.h /usr/include/sys/_types/_null.h
+Edge.o: /usr/include/sys/_types/_off_t.h /usr/include/sys/_types/_ssize_t.h
+Edge.o: /usr/include/secure/_stdio.h /usr/include/secure/_common.h Edge.h
+Edge.o: Vertex.h Cell.h
+LineSeg.o: LineSeg.h Edge.h Vertex.h
+MapWidget.o: /usr/include/stdio.h /usr/include/sys/cdefs.h
+MapWidget.o: /usr/include/sys/_symbol_aliasing.h
+MapWidget.o: /usr/include/sys/_posix_availability.h
+MapWidget.o: /usr/include/Availability.h /usr/include/AvailabilityInternal.h
+MapWidget.o: /usr/include/_types.h /usr/include/sys/_types.h
+MapWidget.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+MapWidget.o: /usr/include/sys/_types/_va_list.h
+MapWidget.o: /usr/include/sys/_types/_size_t.h
+MapWidget.o: /usr/include/sys/_types/_null.h /usr/include/sys/_types/_off_t.h
+MapWidget.o: /usr/include/sys/_types/_ssize_t.h /usr/include/secure/_stdio.h
+MapWidget.o: /usr/include/secure/_common.h MapWidget.h /usr/include/FL/Fl.H
+MapWidget.o: /usr/include/FL/fl_utf8.h /usr/include/FL/Fl_Export.H
+MapWidget.o: /usr/include/FL/fl_types.h /usr/include/string.h
+MapWidget.o: /usr/include/sys/_types/_rsize_t.h
+MapWidget.o: /usr/include/sys/_types/_errno_t.h /usr/include/strings.h
+MapWidget.o: /usr/include/secure/_string.h /usr/include/stdlib.h
+MapWidget.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+MapWidget.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+MapWidget.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+MapWidget.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+MapWidget.o: /usr/include/i386/_mcontext.h /usr/include/mach/i386/_structs.h
+MapWidget.o: /usr/include/sys/_types/_sigaltstack.h
+MapWidget.o: /usr/include/sys/_types/_ucontext.h
+MapWidget.o: /usr/include/sys/_types/_pthread_attr_t.h
+MapWidget.o: /usr/include/sys/_types/_sigset_t.h
+MapWidget.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+MapWidget.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+MapWidget.o: /usr/include/sys/_types/_int16_t.h
+MapWidget.o: /usr/include/sys/_types/_int32_t.h
+MapWidget.o: /usr/include/sys/_types/_int64_t.h
+MapWidget.o: /usr/include/_types/_uint8_t.h /usr/include/_types/_uint16_t.h
+MapWidget.o: /usr/include/_types/_uint32_t.h /usr/include/_types/_uint64_t.h
+MapWidget.o: /usr/include/sys/_types/_intptr_t.h
+MapWidget.o: /usr/include/sys/_types/_uintptr_t.h
+MapWidget.o: /usr/include/_types/_intmax_t.h /usr/include/_types/_uintmax_t.h
+MapWidget.o: /usr/include/sys/_types/_timeval.h /usr/include/machine/endian.h
+MapWidget.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+MapWidget.o: /usr/include/libkern/_OSByteOrder.h
+MapWidget.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h
+MapWidget.o: /usr/include/sys/_types/_ct_rune_t.h
+MapWidget.o: /usr/include/sys/_types/_rune_t.h
+MapWidget.o: /usr/include/sys/_types/_wchar_t.h /usr/include/machine/types.h
+MapWidget.o: /usr/include/i386/types.h /usr/include/sys/_types/___offsetof.h
+MapWidget.o: /usr/include/sys/_types/_dev_t.h
+MapWidget.o: /usr/include/sys/_types/_mode_t.h /usr/include/sys/types.h
+MapWidget.o: /usr/include/sys/_types/_blkcnt_t.h
+MapWidget.o: /usr/include/sys/_types/_blksize_t.h
+MapWidget.o: /usr/include/sys/_types/_gid_t.h
+MapWidget.o: /usr/include/sys/_types/_in_addr_t.h
+MapWidget.o: /usr/include/sys/_types/_in_port_t.h
+MapWidget.o: /usr/include/sys/_types/_ino_t.h
+MapWidget.o: /usr/include/sys/_types/_ino64_t.h
+MapWidget.o: /usr/include/sys/_types/_key_t.h
+MapWidget.o: /usr/include/sys/_types/_nlink_t.h
+MapWidget.o: /usr/include/sys/_types/_clock_t.h
+MapWidget.o: /usr/include/sys/_types/_time_t.h
+MapWidget.o: /usr/include/sys/_types/_useconds_t.h
+MapWidget.o: /usr/include/sys/_types/_suseconds_t.h
+MapWidget.o: /usr/include/sys/_types/_fd_def.h
+MapWidget.o: /usr/include/sys/_types/_fd_setsize.h
+MapWidget.o: /usr/include/sys/_types/_fd_set.h
+MapWidget.o: /usr/include/sys/_types/_fd_clr.h
+MapWidget.o: /usr/include/sys/_types/_fd_zero.h
+MapWidget.o: /usr/include/sys/_types/_fd_isset.h
+MapWidget.o: /usr/include/sys/_types/_fd_copy.h
+MapWidget.o: /usr/include/sys/_types/_pthread_cond_t.h
+MapWidget.o: /usr/include/sys/_types/_pthread_condattr_t.h
+MapWidget.o: /usr/include/sys/_types/_pthread_mutex_t.h
+MapWidget.o: /usr/include/sys/_types/_pthread_mutexattr_t.h
+MapWidget.o: /usr/include/sys/_types/_pthread_once_t.h
+MapWidget.o: /usr/include/sys/_types/_pthread_rwlock_t.h
+MapWidget.o: /usr/include/sys/_types/_pthread_rwlockattr_t.h
+MapWidget.o: /usr/include/sys/_types/_pthread_t.h
+MapWidget.o: /usr/include/sys/_types/_pthread_key_t.h
+MapWidget.o: /usr/include/sys/_types/_fsblkcnt_t.h
+MapWidget.o: /usr/include/sys/_types/_fsfilcnt_t.h /usr/include/sys/stat.h
+MapWidget.o: /usr/include/sys/_types/_timespec.h
+MapWidget.o: /usr/include/sys/_types/_s_ifmt.h
+MapWidget.o: /usr/include/sys/_types/_filesec_t.h /usr/include/FL/Xutf8.h
+MapWidget.o: /usr/include/X11/X.h /usr/include/X11/Xlib.h
+MapWidget.o: /usr/include/X11/Xfuncproto.h /usr/include/stddef.h
+MapWidget.o: /usr/include/sys/_types/_ptrdiff_t.h
+MapWidget.o: /usr/include/sys/_types/_wint_t.h /usr/include/tkIntXlibDecls.h
+MapWidget.o: /usr/include/X11/Xutil.h /usr/include/locale.h
+MapWidget.o: /usr/include/_locale.h /usr/include/FL/Enumerations.H
+MapWidget.o: /usr/include/FL/Fl_Widget.H Maze.h /usr/include/FL/math.h
+MapWidget.o: /usr/include/math.h Cell.h Edge.h Vertex.h
+MapWidget.o: /usr/include/FL/fl_draw.H /usr/include/FL/x.H
+MapWidget.o: /usr/include/X11/Xatom.h /usr/include/FL/Fl_Window.H
+MapWidget.o: /usr/include/FL/Fl_Group.H /usr/include/FL/Enumerations.H
+MapWidget.o: /usr/include/FL/Fl_Window.H /usr/include/FL/Fl_Device.H
+MapWidget.o: /usr/include/FL/Fl_Plugin.H /usr/include/FL/Fl_Preferences.H
+MapWidget.o: /usr/include/FL/Fl_Image.H /usr/include/FL/Fl_Bitmap.H
+MapWidget.o: /usr/include/FL/Fl_Image.H /usr/include/FL/Fl_Pixmap.H
+MapWidget.o: /usr/include/FL/Fl_RGB_Image.H
+Maze.o: Maze.h /usr/include/FL/math.h /usr/include/math.h
+Maze.o: /usr/include/sys/cdefs.h /usr/include/sys/_symbol_aliasing.h
+Maze.o: /usr/include/sys/_posix_availability.h /usr/include/Availability.h
+Maze.o: /usr/include/AvailabilityInternal.h Cell.h Edge.h Vertex.h
+Maze.o: /usr/include/stdio.h /usr/include/_types.h /usr/include/sys/_types.h
+Maze.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+Maze.o: /usr/include/sys/_types/_va_list.h /usr/include/sys/_types/_size_t.h
+Maze.o: /usr/include/sys/_types/_null.h /usr/include/sys/_types/_off_t.h
+Maze.o: /usr/include/sys/_types/_ssize_t.h /usr/include/secure/_stdio.h
+Maze.o: /usr/include/secure/_common.h /usr/include/stdlib.h
+Maze.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+Maze.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+Maze.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+Maze.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+Maze.o: /usr/include/i386/_mcontext.h /usr/include/mach/i386/_structs.h
+Maze.o: /usr/include/sys/_types/_sigaltstack.h
+Maze.o: /usr/include/sys/_types/_ucontext.h
+Maze.o: /usr/include/sys/_types/_pthread_attr_t.h
+Maze.o: /usr/include/sys/_types/_sigset_t.h /usr/include/sys/_types/_uid_t.h
+Maze.o: /usr/include/sys/resource.h /usr/include/stdint.h
+Maze.o: /usr/include/sys/_types/_int8_t.h /usr/include/sys/_types/_int16_t.h
+Maze.o: /usr/include/sys/_types/_int32_t.h /usr/include/sys/_types/_int64_t.h
+Maze.o: /usr/include/_types/_uint8_t.h /usr/include/_types/_uint16_t.h
+Maze.o: /usr/include/_types/_uint32_t.h /usr/include/_types/_uint64_t.h
+Maze.o: /usr/include/sys/_types/_intptr_t.h
+Maze.o: /usr/include/sys/_types/_uintptr_t.h /usr/include/_types/_intmax_t.h
+Maze.o: /usr/include/_types/_uintmax_t.h /usr/include/sys/_types/_timeval.h
+Maze.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+Maze.o: /usr/include/sys/_endian.h /usr/include/libkern/_OSByteOrder.h
+Maze.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h
+Maze.o: /usr/include/sys/_types/_ct_rune_t.h
+Maze.o: /usr/include/sys/_types/_rune_t.h /usr/include/sys/_types/_wchar_t.h
+Maze.o: /usr/include/machine/types.h /usr/include/i386/types.h
+Maze.o: /usr/include/sys/_types/___offsetof.h
+Maze.o: /usr/include/sys/_types/_dev_t.h /usr/include/sys/_types/_mode_t.h
+Maze.o: /usr/include/string.h /usr/include/sys/_types/_rsize_t.h
+Maze.o: /usr/include/sys/_types/_errno_t.h /usr/include/strings.h
+Maze.o: /usr/include/secure/_string.h /usr/include/time.h
+Maze.o: /usr/include/_structs.h /usr/include/sys/_structs.h
+Maze.o: /usr/include/sys/_types/_timespec.h
+Maze.o: /usr/include/sys/_types/_clock_t.h /usr/include/sys/_types/_time_t.h
+Maze.o: /usr/include/FL/Fl.H /usr/include/FL/fl_utf8.h
+Maze.o: /usr/include/FL/Fl_Export.H /usr/include/FL/fl_types.h
+Maze.o: /usr/include/sys/types.h /usr/include/sys/_types/_blkcnt_t.h
+Maze.o: /usr/include/sys/_types/_blksize_t.h /usr/include/sys/_types/_gid_t.h
+Maze.o: /usr/include/sys/_types/_in_addr_t.h
+Maze.o: /usr/include/sys/_types/_in_port_t.h /usr/include/sys/_types/_ino_t.h
+Maze.o: /usr/include/sys/_types/_ino64_t.h /usr/include/sys/_types/_key_t.h
+Maze.o: /usr/include/sys/_types/_nlink_t.h
+Maze.o: /usr/include/sys/_types/_useconds_t.h
+Maze.o: /usr/include/sys/_types/_suseconds_t.h
+Maze.o: /usr/include/sys/_types/_fd_def.h
+Maze.o: /usr/include/sys/_types/_fd_setsize.h
+Maze.o: /usr/include/sys/_types/_fd_set.h /usr/include/sys/_types/_fd_clr.h
+Maze.o: /usr/include/sys/_types/_fd_zero.h
+Maze.o: /usr/include/sys/_types/_fd_isset.h
+Maze.o: /usr/include/sys/_types/_fd_copy.h
+Maze.o: /usr/include/sys/_types/_pthread_cond_t.h
+Maze.o: /usr/include/sys/_types/_pthread_condattr_t.h
+Maze.o: /usr/include/sys/_types/_pthread_mutex_t.h
+Maze.o: /usr/include/sys/_types/_pthread_mutexattr_t.h
+Maze.o: /usr/include/sys/_types/_pthread_once_t.h
+Maze.o: /usr/include/sys/_types/_pthread_rwlock_t.h
+Maze.o: /usr/include/sys/_types/_pthread_rwlockattr_t.h
+Maze.o: /usr/include/sys/_types/_pthread_t.h
+Maze.o: /usr/include/sys/_types/_pthread_key_t.h
+Maze.o: /usr/include/sys/_types/_fsblkcnt_t.h
+Maze.o: /usr/include/sys/_types/_fsfilcnt_t.h /usr/include/sys/stat.h
+Maze.o: /usr/include/sys/_types/_s_ifmt.h
+Maze.o: /usr/include/sys/_types/_filesec_t.h /usr/include/FL/Xutf8.h
+Maze.o: /usr/include/X11/X.h /usr/include/X11/Xlib.h
+Maze.o: /usr/include/X11/Xfuncproto.h /usr/include/stddef.h
+Maze.o: /usr/include/sys/_types/_ptrdiff_t.h
+Maze.o: /usr/include/sys/_types/_wint_t.h /usr/include/tkIntXlibDecls.h
+Maze.o: /usr/include/X11/Xutil.h /usr/include/locale.h /usr/include/_locale.h
+Maze.o: /usr/include/FL/Enumerations.H /usr/include/FL/fl_draw.H
+Maze.o: /usr/include/FL/x.H /usr/include/X11/Xatom.h
+Maze.o: /usr/include/FL/Fl_Window.H /usr/include/FL/Fl_Group.H
+Maze.o: /usr/include/FL/Enumerations.H /usr/include/FL/Fl_Window.H
+Maze.o: /usr/include/FL/Fl_Device.H /usr/include/FL/Fl_Plugin.H
+Maze.o: /usr/include/FL/Fl_Preferences.H /usr/include/FL/Fl_Image.H
+Maze.o: /usr/include/FL/Fl_Bitmap.H /usr/include/FL/Fl_Image.H
+Maze.o: /usr/include/FL/Fl_Pixmap.H /usr/include/FL/Fl_RGB_Image.H
+Maze.o: /usr/include/GL/gl.h
+MazeWindow.o: MazeWindow.h /usr/include/FL/Fl.H /usr/include/FL/fl_utf8.h
+MazeWindow.o: /usr/include/FL/Fl_Export.H /usr/include/FL/fl_types.h
+MazeWindow.o: /usr/include/stdio.h /usr/include/sys/cdefs.h
+MazeWindow.o: /usr/include/sys/_symbol_aliasing.h
+MazeWindow.o: /usr/include/sys/_posix_availability.h
+MazeWindow.o: /usr/include/Availability.h /usr/include/AvailabilityInternal.h
+MazeWindow.o: /usr/include/_types.h /usr/include/sys/_types.h
+MazeWindow.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+MazeWindow.o: /usr/include/sys/_types/_va_list.h
+MazeWindow.o: /usr/include/sys/_types/_size_t.h
+MazeWindow.o: /usr/include/sys/_types/_null.h
+MazeWindow.o: /usr/include/sys/_types/_off_t.h
+MazeWindow.o: /usr/include/sys/_types/_ssize_t.h /usr/include/secure/_stdio.h
+MazeWindow.o: /usr/include/secure/_common.h /usr/include/string.h
+MazeWindow.o: /usr/include/sys/_types/_rsize_t.h
+MazeWindow.o: /usr/include/sys/_types/_errno_t.h /usr/include/strings.h
+MazeWindow.o: /usr/include/secure/_string.h /usr/include/stdlib.h
+MazeWindow.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+MazeWindow.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+MazeWindow.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+MazeWindow.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+MazeWindow.o: /usr/include/i386/_mcontext.h /usr/include/mach/i386/_structs.h
+MazeWindow.o: /usr/include/sys/_types/_sigaltstack.h
+MazeWindow.o: /usr/include/sys/_types/_ucontext.h
+MazeWindow.o: /usr/include/sys/_types/_pthread_attr_t.h
+MazeWindow.o: /usr/include/sys/_types/_sigset_t.h
+MazeWindow.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+MazeWindow.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+MazeWindow.o: /usr/include/sys/_types/_int16_t.h
+MazeWindow.o: /usr/include/sys/_types/_int32_t.h
+MazeWindow.o: /usr/include/sys/_types/_int64_t.h
+MazeWindow.o: /usr/include/_types/_uint8_t.h /usr/include/_types/_uint16_t.h
+MazeWindow.o: /usr/include/_types/_uint32_t.h /usr/include/_types/_uint64_t.h
+MazeWindow.o: /usr/include/sys/_types/_intptr_t.h
+MazeWindow.o: /usr/include/sys/_types/_uintptr_t.h
+MazeWindow.o: /usr/include/_types/_intmax_t.h
+MazeWindow.o: /usr/include/_types/_uintmax_t.h
+MazeWindow.o: /usr/include/sys/_types/_timeval.h
+MazeWindow.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+MazeWindow.o: /usr/include/sys/_endian.h /usr/include/libkern/_OSByteOrder.h
+MazeWindow.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h
+MazeWindow.o: /usr/include/sys/_types/_ct_rune_t.h
+MazeWindow.o: /usr/include/sys/_types/_rune_t.h
+MazeWindow.o: /usr/include/sys/_types/_wchar_t.h /usr/include/machine/types.h
+MazeWindow.o: /usr/include/i386/types.h /usr/include/sys/_types/___offsetof.h
+MazeWindow.o: /usr/include/sys/_types/_dev_t.h
+MazeWindow.o: /usr/include/sys/_types/_mode_t.h /usr/include/sys/types.h
+MazeWindow.o: /usr/include/sys/_types/_blkcnt_t.h
+MazeWindow.o: /usr/include/sys/_types/_blksize_t.h
+MazeWindow.o: /usr/include/sys/_types/_gid_t.h
+MazeWindow.o: /usr/include/sys/_types/_in_addr_t.h
+MazeWindow.o: /usr/include/sys/_types/_in_port_t.h
+MazeWindow.o: /usr/include/sys/_types/_ino_t.h
+MazeWindow.o: /usr/include/sys/_types/_ino64_t.h
+MazeWindow.o: /usr/include/sys/_types/_key_t.h
+MazeWindow.o: /usr/include/sys/_types/_nlink_t.h
+MazeWindow.o: /usr/include/sys/_types/_clock_t.h
+MazeWindow.o: /usr/include/sys/_types/_time_t.h
+MazeWindow.o: /usr/include/sys/_types/_useconds_t.h
+MazeWindow.o: /usr/include/sys/_types/_suseconds_t.h
+MazeWindow.o: /usr/include/sys/_types/_fd_def.h
+MazeWindow.o: /usr/include/sys/_types/_fd_setsize.h
+MazeWindow.o: /usr/include/sys/_types/_fd_set.h
+MazeWindow.o: /usr/include/sys/_types/_fd_clr.h
+MazeWindow.o: /usr/include/sys/_types/_fd_zero.h
+MazeWindow.o: /usr/include/sys/_types/_fd_isset.h
+MazeWindow.o: /usr/include/sys/_types/_fd_copy.h
+MazeWindow.o: /usr/include/sys/_types/_pthread_cond_t.h
+MazeWindow.o: /usr/include/sys/_types/_pthread_condattr_t.h
+MazeWindow.o: /usr/include/sys/_types/_pthread_mutex_t.h
+MazeWindow.o: /usr/include/sys/_types/_pthread_mutexattr_t.h
+MazeWindow.o: /usr/include/sys/_types/_pthread_once_t.h
+MazeWindow.o: /usr/include/sys/_types/_pthread_rwlock_t.h
+MazeWindow.o: /usr/include/sys/_types/_pthread_rwlockattr_t.h
+MazeWindow.o: /usr/include/sys/_types/_pthread_t.h
+MazeWindow.o: /usr/include/sys/_types/_pthread_key_t.h
+MazeWindow.o: /usr/include/sys/_types/_fsblkcnt_t.h
+MazeWindow.o: /usr/include/sys/_types/_fsfilcnt_t.h /usr/include/sys/stat.h
+MazeWindow.o: /usr/include/sys/_types/_timespec.h
+MazeWindow.o: /usr/include/sys/_types/_s_ifmt.h
+MazeWindow.o: /usr/include/sys/_types/_filesec_t.h /usr/include/FL/Xutf8.h
+MazeWindow.o: /usr/include/X11/X.h /usr/include/X11/Xlib.h
+MazeWindow.o: /usr/include/X11/Xfuncproto.h /usr/include/stddef.h
+MazeWindow.o: /usr/include/sys/_types/_ptrdiff_t.h
+MazeWindow.o: /usr/include/sys/_types/_wint_t.h /usr/include/tkIntXlibDecls.h
+MazeWindow.o: /usr/include/X11/Xutil.h /usr/include/locale.h
+MazeWindow.o: /usr/include/_locale.h /usr/include/FL/Enumerations.H
+MazeWindow.o: /usr/include/FL/Fl_Gl_Window.H /usr/include/FL/Fl_Window.H
+MazeWindow.o: /usr/include/FL/Fl_Group.H Maze.h /usr/include/FL/math.h
+MazeWindow.o: /usr/include/math.h Cell.h Edge.h Vertex.h /usr/include/FL/gl.h
+MazeWindow.o: /usr/include/GL/gl.h /usr/include/GL/glu.h
+RunMaze.o: /usr/include/stdio.h /usr/include/sys/cdefs.h
+RunMaze.o: /usr/include/sys/_symbol_aliasing.h
+RunMaze.o: /usr/include/sys/_posix_availability.h /usr/include/Availability.h
+RunMaze.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+RunMaze.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+RunMaze.o: /usr/include/i386/_types.h /usr/include/sys/_types/_va_list.h
+RunMaze.o: /usr/include/sys/_types/_size_t.h /usr/include/sys/_types/_null.h
+RunMaze.o: /usr/include/sys/_types/_off_t.h
+RunMaze.o: /usr/include/sys/_types/_ssize_t.h /usr/include/secure/_stdio.h
+RunMaze.o: /usr/include/secure/_common.h /usr/include/stdlib.h
+RunMaze.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+RunMaze.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+RunMaze.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+RunMaze.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+RunMaze.o: /usr/include/i386/_mcontext.h /usr/include/mach/i386/_structs.h
+RunMaze.o: /usr/include/sys/_types/_sigaltstack.h
+RunMaze.o: /usr/include/sys/_types/_ucontext.h
+RunMaze.o: /usr/include/sys/_types/_pthread_attr_t.h
+RunMaze.o: /usr/include/sys/_types/_sigset_t.h
+RunMaze.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+RunMaze.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+RunMaze.o: /usr/include/sys/_types/_int16_t.h
+RunMaze.o: /usr/include/sys/_types/_int32_t.h
+RunMaze.o: /usr/include/sys/_types/_int64_t.h /usr/include/_types/_uint8_t.h
+RunMaze.o: /usr/include/_types/_uint16_t.h /usr/include/_types/_uint32_t.h
+RunMaze.o: /usr/include/_types/_uint64_t.h
+RunMaze.o: /usr/include/sys/_types/_intptr_t.h
+RunMaze.o: /usr/include/sys/_types/_uintptr_t.h
+RunMaze.o: /usr/include/_types/_intmax_t.h /usr/include/_types/_uintmax_t.h
+RunMaze.o: /usr/include/sys/_types/_timeval.h /usr/include/machine/endian.h
+RunMaze.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+RunMaze.o: /usr/include/libkern/_OSByteOrder.h
+RunMaze.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h
+RunMaze.o: /usr/include/sys/_types/_ct_rune_t.h
+RunMaze.o: /usr/include/sys/_types/_rune_t.h
+RunMaze.o: /usr/include/sys/_types/_wchar_t.h /usr/include/machine/types.h
+RunMaze.o: /usr/include/i386/types.h /usr/include/sys/_types/___offsetof.h
+RunMaze.o: /usr/include/sys/_types/_dev_t.h /usr/include/sys/_types/_mode_t.h
+RunMaze.o: /usr/include/math.h Maze.h /usr/include/FL/math.h Cell.h Edge.h
+RunMaze.o: Vertex.h /usr/include/FL/Fl.H /usr/include/FL/fl_utf8.h
+RunMaze.o: /usr/include/FL/Fl_Export.H /usr/include/FL/fl_types.h
+RunMaze.o: /usr/include/string.h /usr/include/sys/_types/_rsize_t.h
+RunMaze.o: /usr/include/sys/_types/_errno_t.h /usr/include/strings.h
+RunMaze.o: /usr/include/secure/_string.h /usr/include/sys/types.h
+RunMaze.o: /usr/include/sys/_types/_blkcnt_t.h
+RunMaze.o: /usr/include/sys/_types/_blksize_t.h
+RunMaze.o: /usr/include/sys/_types/_gid_t.h
+RunMaze.o: /usr/include/sys/_types/_in_addr_t.h
+RunMaze.o: /usr/include/sys/_types/_in_port_t.h
+RunMaze.o: /usr/include/sys/_types/_ino_t.h
+RunMaze.o: /usr/include/sys/_types/_ino64_t.h
+RunMaze.o: /usr/include/sys/_types/_key_t.h
+RunMaze.o: /usr/include/sys/_types/_nlink_t.h
+RunMaze.o: /usr/include/sys/_types/_clock_t.h
+RunMaze.o: /usr/include/sys/_types/_time_t.h
+RunMaze.o: /usr/include/sys/_types/_useconds_t.h
+RunMaze.o: /usr/include/sys/_types/_suseconds_t.h
+RunMaze.o: /usr/include/sys/_types/_fd_def.h
+RunMaze.o: /usr/include/sys/_types/_fd_setsize.h
+RunMaze.o: /usr/include/sys/_types/_fd_set.h
+RunMaze.o: /usr/include/sys/_types/_fd_clr.h
+RunMaze.o: /usr/include/sys/_types/_fd_zero.h
+RunMaze.o: /usr/include/sys/_types/_fd_isset.h
+RunMaze.o: /usr/include/sys/_types/_fd_copy.h
+RunMaze.o: /usr/include/sys/_types/_pthread_cond_t.h
+RunMaze.o: /usr/include/sys/_types/_pthread_condattr_t.h
+RunMaze.o: /usr/include/sys/_types/_pthread_mutex_t.h
+RunMaze.o: /usr/include/sys/_types/_pthread_mutexattr_t.h
+RunMaze.o: /usr/include/sys/_types/_pthread_once_t.h
+RunMaze.o: /usr/include/sys/_types/_pthread_rwlock_t.h
+RunMaze.o: /usr/include/sys/_types/_pthread_rwlockattr_t.h
+RunMaze.o: /usr/include/sys/_types/_pthread_t.h
+RunMaze.o: /usr/include/sys/_types/_pthread_key_t.h
+RunMaze.o: /usr/include/sys/_types/_fsblkcnt_t.h
+RunMaze.o: /usr/include/sys/_types/_fsfilcnt_t.h /usr/include/sys/stat.h
+RunMaze.o: /usr/include/sys/_types/_timespec.h
+RunMaze.o: /usr/include/sys/_types/_s_ifmt.h
+RunMaze.o: /usr/include/sys/_types/_filesec_t.h /usr/include/FL/Xutf8.h
+RunMaze.o: /usr/include/X11/X.h /usr/include/X11/Xlib.h
+RunMaze.o: /usr/include/X11/Xfuncproto.h /usr/include/stddef.h
+RunMaze.o: /usr/include/sys/_types/_ptrdiff_t.h
+RunMaze.o: /usr/include/sys/_types/_wint_t.h /usr/include/tkIntXlibDecls.h
+RunMaze.o: /usr/include/X11/Xutil.h /usr/include/locale.h
+RunMaze.o: /usr/include/_locale.h /usr/include/FL/Enumerations.H
+RunMaze.o: /usr/include/FL/fl_ask.H MapWidget.h /usr/include/FL/Fl_Widget.H
+RunMaze.o: MazeWindow.h /usr/include/FL/Fl_Gl_Window.H
+RunMaze.o: /usr/include/FL/Fl_Window.H /usr/include/FL/Fl_Group.H
+RunMaze.o: /usr/include/FL/Fl_Button.H /usr/include/FL/Fl_Counter.H
+RunMaze.o: /usr/include/FL/Fl_Valuator.H /usr/include/FL/Fl_Window.H
+Vertex.o: /usr/include/stdio.h /usr/include/sys/cdefs.h
+Vertex.o: /usr/include/sys/_symbol_aliasing.h
+Vertex.o: /usr/include/sys/_posix_availability.h /usr/include/Availability.h
+Vertex.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+Vertex.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+Vertex.o: /usr/include/i386/_types.h /usr/include/sys/_types/_va_list.h
+Vertex.o: /usr/include/sys/_types/_size_t.h /usr/include/sys/_types/_null.h
+Vertex.o: /usr/include/sys/_types/_off_t.h /usr/include/sys/_types/_ssize_t.h
+Vertex.o: /usr/include/secure/_stdio.h /usr/include/secure/_common.h Vertex.h
+Cell.o: /usr/include/stdio.h /usr/include/sys/cdefs.h
+Cell.o: /usr/include/sys/_symbol_aliasing.h
+Cell.o: /usr/include/sys/_posix_availability.h /usr/include/Availability.h
+Cell.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+Cell.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+Cell.o: /usr/include/i386/_types.h /usr/include/sys/_types/_va_list.h
+Cell.o: /usr/include/sys/_types/_size_t.h /usr/include/sys/_types/_null.h
+Cell.o: /usr/include/sys/_types/_off_t.h /usr/include/sys/_types/_ssize_t.h
+Cell.o: /usr/include/secure/_stdio.h /usr/include/secure/_common.h Maze.h
+Cell.o: /usr/include/FL/math.h /usr/include/math.h Cell.h Edge.h Vertex.h
+Cell.o: LineSeg.h /usr/include/FL/gl.h /usr/include/FL/Enumerations.H
+Cell.o: /usr/include/FL/Fl_Export.H /usr/include/FL/fl_types.h
+Cell.o: /usr/include/GL/gl.h
+Edge.o: /usr/include/stdio.h /usr/include/sys/cdefs.h
+Edge.o: /usr/include/sys/_symbol_aliasing.h
+Edge.o: /usr/include/sys/_posix_availability.h /usr/include/Availability.h
+Edge.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+Edge.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+Edge.o: /usr/include/i386/_types.h /usr/include/sys/_types/_va_list.h
+Edge.o: /usr/include/sys/_types/_size_t.h /usr/include/sys/_types/_null.h
+Edge.o: /usr/include/sys/_types/_off_t.h /usr/include/sys/_types/_ssize_t.h
+Edge.o: /usr/include/secure/_stdio.h /usr/include/secure/_common.h Edge.h
+Edge.o: Vertex.h Cell.h
+LineSeg.o: LineSeg.h Edge.h Vertex.h
+MapWidget.o: /usr/include/stdio.h /usr/include/sys/cdefs.h
+MapWidget.o: /usr/include/sys/_symbol_aliasing.h
+MapWidget.o: /usr/include/sys/_posix_availability.h
+MapWidget.o: /usr/include/Availability.h /usr/include/AvailabilityInternal.h
+MapWidget.o: /usr/include/_types.h /usr/include/sys/_types.h
+MapWidget.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+MapWidget.o: /usr/include/sys/_types/_va_list.h
+MapWidget.o: /usr/include/sys/_types/_size_t.h
+MapWidget.o: /usr/include/sys/_types/_null.h /usr/include/sys/_types/_off_t.h
+MapWidget.o: /usr/include/sys/_types/_ssize_t.h /usr/include/secure/_stdio.h
+MapWidget.o: /usr/include/secure/_common.h MapWidget.h /usr/include/FL/Fl.H
+MapWidget.o: /usr/include/FL/fl_utf8.h /usr/include/FL/Fl_Export.H
+MapWidget.o: /usr/include/FL/fl_types.h /usr/include/string.h
+MapWidget.o: /usr/include/sys/_types/_rsize_t.h
+MapWidget.o: /usr/include/sys/_types/_errno_t.h /usr/include/strings.h
+MapWidget.o: /usr/include/secure/_string.h /usr/include/stdlib.h
+MapWidget.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+MapWidget.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+MapWidget.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+MapWidget.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+MapWidget.o: /usr/include/i386/_mcontext.h /usr/include/mach/i386/_structs.h
+MapWidget.o: /usr/include/sys/_types/_sigaltstack.h
+MapWidget.o: /usr/include/sys/_types/_ucontext.h
+MapWidget.o: /usr/include/sys/_types/_pthread_attr_t.h
+MapWidget.o: /usr/include/sys/_types/_sigset_t.h
+MapWidget.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+MapWidget.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+MapWidget.o: /usr/include/sys/_types/_int16_t.h
+MapWidget.o: /usr/include/sys/_types/_int32_t.h
+MapWidget.o: /usr/include/sys/_types/_int64_t.h
+MapWidget.o: /usr/include/_types/_uint8_t.h /usr/include/_types/_uint16_t.h
+MapWidget.o: /usr/include/_types/_uint32_t.h /usr/include/_types/_uint64_t.h
+MapWidget.o: /usr/include/sys/_types/_intptr_t.h
+MapWidget.o: /usr/include/sys/_types/_uintptr_t.h
+MapWidget.o: /usr/include/_types/_intmax_t.h /usr/include/_types/_uintmax_t.h
+MapWidget.o: /usr/include/sys/_types/_timeval.h /usr/include/machine/endian.h
+MapWidget.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+MapWidget.o: /usr/include/libkern/_OSByteOrder.h
+MapWidget.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h
+MapWidget.o: /usr/include/sys/_types/_ct_rune_t.h
+MapWidget.o: /usr/include/sys/_types/_rune_t.h
+MapWidget.o: /usr/include/sys/_types/_wchar_t.h /usr/include/machine/types.h
+MapWidget.o: /usr/include/i386/types.h /usr/include/sys/_types/___offsetof.h
+MapWidget.o: /usr/include/sys/_types/_dev_t.h
+MapWidget.o: /usr/include/sys/_types/_mode_t.h /usr/include/sys/types.h
+MapWidget.o: /usr/include/sys/_types/_blkcnt_t.h
+MapWidget.o: /usr/include/sys/_types/_blksize_t.h
+MapWidget.o: /usr/include/sys/_types/_gid_t.h
+MapWidget.o: /usr/include/sys/_types/_in_addr_t.h
+MapWidget.o: /usr/include/sys/_types/_in_port_t.h
+MapWidget.o: /usr/include/sys/_types/_ino_t.h
+MapWidget.o: /usr/include/sys/_types/_ino64_t.h
+MapWidget.o: /usr/include/sys/_types/_key_t.h
+MapWidget.o: /usr/include/sys/_types/_nlink_t.h
+MapWidget.o: /usr/include/sys/_types/_clock_t.h
+MapWidget.o: /usr/include/sys/_types/_time_t.h
+MapWidget.o: /usr/include/sys/_types/_useconds_t.h
+MapWidget.o: /usr/include/sys/_types/_suseconds_t.h
+MapWidget.o: /usr/include/sys/_types/_fd_def.h
+MapWidget.o: /usr/include/sys/_types/_fd_setsize.h
+MapWidget.o: /usr/include/sys/_types/_fd_set.h
+MapWidget.o: /usr/include/sys/_types/_fd_clr.h
+MapWidget.o: /usr/include/sys/_types/_fd_zero.h
+MapWidget.o: /usr/include/sys/_types/_fd_isset.h
+MapWidget.o: /usr/include/sys/_types/_fd_copy.h
+MapWidget.o: /usr/include/sys/_types/_pthread_cond_t.h
+MapWidget.o: /usr/include/sys/_types/_pthread_condattr_t.h
+MapWidget.o: /usr/include/sys/_types/_pthread_mutex_t.h
+MapWidget.o: /usr/include/sys/_types/_pthread_mutexattr_t.h
+MapWidget.o: /usr/include/sys/_types/_pthread_once_t.h
+MapWidget.o: /usr/include/sys/_types/_pthread_rwlock_t.h
+MapWidget.o: /usr/include/sys/_types/_pthread_rwlockattr_t.h
+MapWidget.o: /usr/include/sys/_types/_pthread_t.h
+MapWidget.o: /usr/include/sys/_types/_pthread_key_t.h
+MapWidget.o: /usr/include/sys/_types/_fsblkcnt_t.h
+MapWidget.o: /usr/include/sys/_types/_fsfilcnt_t.h /usr/include/sys/stat.h
+MapWidget.o: /usr/include/sys/_types/_timespec.h
+MapWidget.o: /usr/include/sys/_types/_s_ifmt.h
+MapWidget.o: /usr/include/sys/_types/_filesec_t.h /usr/include/FL/Xutf8.h
+MapWidget.o: /usr/include/X11/X.h /usr/include/X11/Xlib.h
+MapWidget.o: /usr/include/X11/Xfuncproto.h /usr/include/stddef.h
+MapWidget.o: /usr/include/sys/_types/_ptrdiff_t.h
+MapWidget.o: /usr/include/sys/_types/_wint_t.h /usr/include/tkIntXlibDecls.h
+MapWidget.o: /usr/include/X11/Xutil.h /usr/include/locale.h
+MapWidget.o: /usr/include/_locale.h /usr/include/FL/Enumerations.H
+MapWidget.o: /usr/include/FL/Fl_Widget.H Maze.h /usr/include/FL/math.h
+MapWidget.o: /usr/include/math.h Cell.h Edge.h Vertex.h
+MapWidget.o: /usr/include/FL/fl_draw.H /usr/include/FL/x.H
+MapWidget.o: /usr/include/X11/Xatom.h /usr/include/FL/Fl_Window.H
+MapWidget.o: /usr/include/FL/Fl_Group.H /usr/include/FL/Enumerations.H
+MapWidget.o: /usr/include/FL/Fl_Window.H /usr/include/FL/Fl_Device.H
+MapWidget.o: /usr/include/FL/Fl_Plugin.H /usr/include/FL/Fl_Preferences.H
+MapWidget.o: /usr/include/FL/Fl_Image.H /usr/include/FL/Fl_Bitmap.H
+MapWidget.o: /usr/include/FL/Fl_Image.H /usr/include/FL/Fl_Pixmap.H
+MapWidget.o: /usr/include/FL/Fl_RGB_Image.H
+Maze.o: Maze.h /usr/include/FL/math.h /usr/include/math.h
+Maze.o: /usr/include/sys/cdefs.h /usr/include/sys/_symbol_aliasing.h
+Maze.o: /usr/include/sys/_posix_availability.h /usr/include/Availability.h
+Maze.o: /usr/include/AvailabilityInternal.h Cell.h Edge.h Vertex.h
+Maze.o: /usr/include/stdio.h /usr/include/_types.h /usr/include/sys/_types.h
+Maze.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+Maze.o: /usr/include/sys/_types/_va_list.h /usr/include/sys/_types/_size_t.h
+Maze.o: /usr/include/sys/_types/_null.h /usr/include/sys/_types/_off_t.h
+Maze.o: /usr/include/sys/_types/_ssize_t.h /usr/include/secure/_stdio.h
+Maze.o: /usr/include/secure/_common.h /usr/include/stdlib.h
+Maze.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+Maze.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+Maze.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+Maze.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+Maze.o: /usr/include/i386/_mcontext.h /usr/include/mach/i386/_structs.h
+Maze.o: /usr/include/sys/_types/_sigaltstack.h
+Maze.o: /usr/include/sys/_types/_ucontext.h
+Maze.o: /usr/include/sys/_types/_pthread_attr_t.h
+Maze.o: /usr/include/sys/_types/_sigset_t.h /usr/include/sys/_types/_uid_t.h
+Maze.o: /usr/include/sys/resource.h /usr/include/stdint.h
+Maze.o: /usr/include/sys/_types/_int8_t.h /usr/include/sys/_types/_int16_t.h
+Maze.o: /usr/include/sys/_types/_int32_t.h /usr/include/sys/_types/_int64_t.h
+Maze.o: /usr/include/_types/_uint8_t.h /usr/include/_types/_uint16_t.h
+Maze.o: /usr/include/_types/_uint32_t.h /usr/include/_types/_uint64_t.h
+Maze.o: /usr/include/sys/_types/_intptr_t.h
+Maze.o: /usr/include/sys/_types/_uintptr_t.h /usr/include/_types/_intmax_t.h
+Maze.o: /usr/include/_types/_uintmax_t.h /usr/include/sys/_types/_timeval.h
+Maze.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+Maze.o: /usr/include/sys/_endian.h /usr/include/libkern/_OSByteOrder.h
+Maze.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h
+Maze.o: /usr/include/sys/_types/_ct_rune_t.h
+Maze.o: /usr/include/sys/_types/_rune_t.h /usr/include/sys/_types/_wchar_t.h
+Maze.o: /usr/include/machine/types.h /usr/include/i386/types.h
+Maze.o: /usr/include/sys/_types/___offsetof.h
+Maze.o: /usr/include/sys/_types/_dev_t.h /usr/include/sys/_types/_mode_t.h
+Maze.o: /usr/include/string.h /usr/include/sys/_types/_rsize_t.h
+Maze.o: /usr/include/sys/_types/_errno_t.h /usr/include/strings.h
+Maze.o: /usr/include/secure/_string.h /usr/include/time.h
+Maze.o: /usr/include/_structs.h /usr/include/sys/_structs.h
+Maze.o: /usr/include/sys/_types/_timespec.h
+Maze.o: /usr/include/sys/_types/_clock_t.h /usr/include/sys/_types/_time_t.h
+Maze.o: /usr/include/FL/Fl.H /usr/include/FL/fl_utf8.h
+Maze.o: /usr/include/FL/Fl_Export.H /usr/include/FL/fl_types.h
+Maze.o: /usr/include/sys/types.h /usr/include/sys/_types/_blkcnt_t.h
+Maze.o: /usr/include/sys/_types/_blksize_t.h /usr/include/sys/_types/_gid_t.h
+Maze.o: /usr/include/sys/_types/_in_addr_t.h
+Maze.o: /usr/include/sys/_types/_in_port_t.h /usr/include/sys/_types/_ino_t.h
+Maze.o: /usr/include/sys/_types/_ino64_t.h /usr/include/sys/_types/_key_t.h
+Maze.o: /usr/include/sys/_types/_nlink_t.h
+Maze.o: /usr/include/sys/_types/_useconds_t.h
+Maze.o: /usr/include/sys/_types/_suseconds_t.h
+Maze.o: /usr/include/sys/_types/_fd_def.h
+Maze.o: /usr/include/sys/_types/_fd_setsize.h
+Maze.o: /usr/include/sys/_types/_fd_set.h /usr/include/sys/_types/_fd_clr.h
+Maze.o: /usr/include/sys/_types/_fd_zero.h
+Maze.o: /usr/include/sys/_types/_fd_isset.h
+Maze.o: /usr/include/sys/_types/_fd_copy.h
+Maze.o: /usr/include/sys/_types/_pthread_cond_t.h
+Maze.o: /usr/include/sys/_types/_pthread_condattr_t.h
+Maze.o: /usr/include/sys/_types/_pthread_mutex_t.h
+Maze.o: /usr/include/sys/_types/_pthread_mutexattr_t.h
+Maze.o: /usr/include/sys/_types/_pthread_once_t.h
+Maze.o: /usr/include/sys/_types/_pthread_rwlock_t.h
+Maze.o: /usr/include/sys/_types/_pthread_rwlockattr_t.h
+Maze.o: /usr/include/sys/_types/_pthread_t.h
+Maze.o: /usr/include/sys/_types/_pthread_key_t.h
+Maze.o: /usr/include/sys/_types/_fsblkcnt_t.h
+Maze.o: /usr/include/sys/_types/_fsfilcnt_t.h /usr/include/sys/stat.h
+Maze.o: /usr/include/sys/_types/_s_ifmt.h
+Maze.o: /usr/include/sys/_types/_filesec_t.h /usr/include/FL/Xutf8.h
+Maze.o: /usr/include/X11/X.h /usr/include/X11/Xlib.h
+Maze.o: /usr/include/X11/Xfuncproto.h /usr/include/stddef.h
+Maze.o: /usr/include/sys/_types/_ptrdiff_t.h
+Maze.o: /usr/include/sys/_types/_wint_t.h /usr/include/tkIntXlibDecls.h
+Maze.o: /usr/include/X11/Xutil.h /usr/include/locale.h /usr/include/_locale.h
+Maze.o: /usr/include/FL/Enumerations.H /usr/include/FL/fl_draw.H
+Maze.o: /usr/include/FL/x.H /usr/include/X11/Xatom.h
+Maze.o: /usr/include/FL/Fl_Window.H /usr/include/FL/Fl_Group.H
+Maze.o: /usr/include/FL/Enumerations.H /usr/include/FL/Fl_Window.H
+Maze.o: /usr/include/FL/Fl_Device.H /usr/include/FL/Fl_Plugin.H
+Maze.o: /usr/include/FL/Fl_Preferences.H /usr/include/FL/Fl_Image.H
+Maze.o: /usr/include/FL/Fl_Bitmap.H /usr/include/FL/Fl_Image.H
+Maze.o: /usr/include/FL/Fl_Pixmap.H /usr/include/FL/Fl_RGB_Image.H
+Maze.o: /usr/include/GL/gl.h
+MazeWindow.o: MazeWindow.h /usr/include/FL/Fl.H /usr/include/FL/fl_utf8.h
+MazeWindow.o: /usr/include/FL/Fl_Export.H /usr/include/FL/fl_types.h
+MazeWindow.o: /usr/include/stdio.h /usr/include/sys/cdefs.h
+MazeWindow.o: /usr/include/sys/_symbol_aliasing.h
+MazeWindow.o: /usr/include/sys/_posix_availability.h
+MazeWindow.o: /usr/include/Availability.h /usr/include/AvailabilityInternal.h
+MazeWindow.o: /usr/include/_types.h /usr/include/sys/_types.h
+MazeWindow.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+MazeWindow.o: /usr/include/sys/_types/_va_list.h
+MazeWindow.o: /usr/include/sys/_types/_size_t.h
+MazeWindow.o: /usr/include/sys/_types/_null.h
+MazeWindow.o: /usr/include/sys/_types/_off_t.h
+MazeWindow.o: /usr/include/sys/_types/_ssize_t.h /usr/include/secure/_stdio.h
+MazeWindow.o: /usr/include/secure/_common.h /usr/include/string.h
+MazeWindow.o: /usr/include/sys/_types/_rsize_t.h
+MazeWindow.o: /usr/include/sys/_types/_errno_t.h /usr/include/strings.h
+MazeWindow.o: /usr/include/secure/_string.h /usr/include/stdlib.h
+MazeWindow.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+MazeWindow.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+MazeWindow.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+MazeWindow.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+MazeWindow.o: /usr/include/i386/_mcontext.h /usr/include/mach/i386/_structs.h
+MazeWindow.o: /usr/include/sys/_types/_sigaltstack.h
+MazeWindow.o: /usr/include/sys/_types/_ucontext.h
+MazeWindow.o: /usr/include/sys/_types/_pthread_attr_t.h
+MazeWindow.o: /usr/include/sys/_types/_sigset_t.h
+MazeWindow.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+MazeWindow.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+MazeWindow.o: /usr/include/sys/_types/_int16_t.h
+MazeWindow.o: /usr/include/sys/_types/_int32_t.h
+MazeWindow.o: /usr/include/sys/_types/_int64_t.h
+MazeWindow.o: /usr/include/_types/_uint8_t.h /usr/include/_types/_uint16_t.h
+MazeWindow.o: /usr/include/_types/_uint32_t.h /usr/include/_types/_uint64_t.h
+MazeWindow.o: /usr/include/sys/_types/_intptr_t.h
+MazeWindow.o: /usr/include/sys/_types/_uintptr_t.h
+MazeWindow.o: /usr/include/_types/_intmax_t.h
+MazeWindow.o: /usr/include/_types/_uintmax_t.h
+MazeWindow.o: /usr/include/sys/_types/_timeval.h
+MazeWindow.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+MazeWindow.o: /usr/include/sys/_endian.h /usr/include/libkern/_OSByteOrder.h
+MazeWindow.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h
+MazeWindow.o: /usr/include/sys/_types/_ct_rune_t.h
+MazeWindow.o: /usr/include/sys/_types/_rune_t.h
+MazeWindow.o: /usr/include/sys/_types/_wchar_t.h /usr/include/machine/types.h
+MazeWindow.o: /usr/include/i386/types.h /usr/include/sys/_types/___offsetof.h
+MazeWindow.o: /usr/include/sys/_types/_dev_t.h
+MazeWindow.o: /usr/include/sys/_types/_mode_t.h /usr/include/sys/types.h
+MazeWindow.o: /usr/include/sys/_types/_blkcnt_t.h
+MazeWindow.o: /usr/include/sys/_types/_blksize_t.h
+MazeWindow.o: /usr/include/sys/_types/_gid_t.h
+MazeWindow.o: /usr/include/sys/_types/_in_addr_t.h
+MazeWindow.o: /usr/include/sys/_types/_in_port_t.h
+MazeWindow.o: /usr/include/sys/_types/_ino_t.h
+MazeWindow.o: /usr/include/sys/_types/_ino64_t.h
+MazeWindow.o: /usr/include/sys/_types/_key_t.h
+MazeWindow.o: /usr/include/sys/_types/_nlink_t.h
+MazeWindow.o: /usr/include/sys/_types/_clock_t.h
+MazeWindow.o: /usr/include/sys/_types/_time_t.h
+MazeWindow.o: /usr/include/sys/_types/_useconds_t.h
+MazeWindow.o: /usr/include/sys/_types/_suseconds_t.h
+MazeWindow.o: /usr/include/sys/_types/_fd_def.h
+MazeWindow.o: /usr/include/sys/_types/_fd_setsize.h
+MazeWindow.o: /usr/include/sys/_types/_fd_set.h
+MazeWindow.o: /usr/include/sys/_types/_fd_clr.h
+MazeWindow.o: /usr/include/sys/_types/_fd_zero.h
+MazeWindow.o: /usr/include/sys/_types/_fd_isset.h
+MazeWindow.o: /usr/include/sys/_types/_fd_copy.h
+MazeWindow.o: /usr/include/sys/_types/_pthread_cond_t.h
+MazeWindow.o: /usr/include/sys/_types/_pthread_condattr_t.h
+MazeWindow.o: /usr/include/sys/_types/_pthread_mutex_t.h
+MazeWindow.o: /usr/include/sys/_types/_pthread_mutexattr_t.h
+MazeWindow.o: /usr/include/sys/_types/_pthread_once_t.h
+MazeWindow.o: /usr/include/sys/_types/_pthread_rwlock_t.h
+MazeWindow.o: /usr/include/sys/_types/_pthread_rwlockattr_t.h
+MazeWindow.o: /usr/include/sys/_types/_pthread_t.h
+MazeWindow.o: /usr/include/sys/_types/_pthread_key_t.h
+MazeWindow.o: /usr/include/sys/_types/_fsblkcnt_t.h
+MazeWindow.o: /usr/include/sys/_types/_fsfilcnt_t.h /usr/include/sys/stat.h
+MazeWindow.o: /usr/include/sys/_types/_timespec.h
+MazeWindow.o: /usr/include/sys/_types/_s_ifmt.h
+MazeWindow.o: /usr/include/sys/_types/_filesec_t.h /usr/include/FL/Xutf8.h
+MazeWindow.o: /usr/include/X11/X.h /usr/include/X11/Xlib.h
+MazeWindow.o: /usr/include/X11/Xfuncproto.h /usr/include/stddef.h
+MazeWindow.o: /usr/include/sys/_types/_ptrdiff_t.h
+MazeWindow.o: /usr/include/sys/_types/_wint_t.h /usr/include/tkIntXlibDecls.h
+MazeWindow.o: /usr/include/X11/Xutil.h /usr/include/locale.h
+MazeWindow.o: /usr/include/_locale.h /usr/include/FL/Enumerations.H
+MazeWindow.o: /usr/include/FL/Fl_Gl_Window.H /usr/include/FL/Fl_Window.H
+MazeWindow.o: /usr/include/FL/Fl_Group.H Maze.h /usr/include/FL/math.h
+MazeWindow.o: /usr/include/math.h Cell.h Edge.h Vertex.h /usr/include/FL/gl.h
+MazeWindow.o: /usr/include/GL/gl.h /usr/include/GL/glu.h
+BuildMaze.o: /usr/include/stdio.h /usr/include/sys/cdefs.h
+BuildMaze.o: /usr/include/sys/_symbol_aliasing.h
+BuildMaze.o: /usr/include/sys/_posix_availability.h
+BuildMaze.o: /usr/include/Availability.h /usr/include/AvailabilityInternal.h
+BuildMaze.o: /usr/include/_types.h /usr/include/sys/_types.h
+BuildMaze.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+BuildMaze.o: /usr/include/sys/_types/_va_list.h
+BuildMaze.o: /usr/include/sys/_types/_size_t.h
+BuildMaze.o: /usr/include/sys/_types/_null.h /usr/include/sys/_types/_off_t.h
+BuildMaze.o: /usr/include/sys/_types/_ssize_t.h /usr/include/secure/_stdio.h
+BuildMaze.o: /usr/include/secure/_common.h /usr/include/stdlib.h
+BuildMaze.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+BuildMaze.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+BuildMaze.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+BuildMaze.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+BuildMaze.o: /usr/include/i386/_mcontext.h /usr/include/mach/i386/_structs.h
+BuildMaze.o: /usr/include/sys/_types/_sigaltstack.h
+BuildMaze.o: /usr/include/sys/_types/_ucontext.h
+BuildMaze.o: /usr/include/sys/_types/_pthread_attr_t.h
+BuildMaze.o: /usr/include/sys/_types/_sigset_t.h
+BuildMaze.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+BuildMaze.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+BuildMaze.o: /usr/include/sys/_types/_int16_t.h
+BuildMaze.o: /usr/include/sys/_types/_int32_t.h
+BuildMaze.o: /usr/include/sys/_types/_int64_t.h
+BuildMaze.o: /usr/include/_types/_uint8_t.h /usr/include/_types/_uint16_t.h
+BuildMaze.o: /usr/include/_types/_uint32_t.h /usr/include/_types/_uint64_t.h
+BuildMaze.o: /usr/include/sys/_types/_intptr_t.h
+BuildMaze.o: /usr/include/sys/_types/_uintptr_t.h
+BuildMaze.o: /usr/include/_types/_intmax_t.h /usr/include/_types/_uintmax_t.h
+BuildMaze.o: /usr/include/sys/_types/_timeval.h /usr/include/machine/endian.h
+BuildMaze.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+BuildMaze.o: /usr/include/libkern/_OSByteOrder.h
+BuildMaze.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h
+BuildMaze.o: /usr/include/sys/_types/_ct_rune_t.h
+BuildMaze.o: /usr/include/sys/_types/_rune_t.h
+BuildMaze.o: /usr/include/sys/_types/_wchar_t.h /usr/include/machine/types.h
+BuildMaze.o: /usr/include/i386/types.h /usr/include/sys/_types/___offsetof.h
+BuildMaze.o: /usr/include/sys/_types/_dev_t.h
+BuildMaze.o: /usr/include/sys/_types/_mode_t.h /usr/include/math.h Maze.h
+BuildMaze.o: /usr/include/FL/math.h Cell.h Edge.h Vertex.h
+BuildMaze.o: /usr/include/FL/Fl.H /usr/include/FL/fl_utf8.h
+BuildMaze.o: /usr/include/FL/Fl_Export.H /usr/include/FL/fl_types.h
+BuildMaze.o: /usr/include/string.h /usr/include/sys/_types/_rsize_t.h
+BuildMaze.o: /usr/include/sys/_types/_errno_t.h /usr/include/strings.h
+BuildMaze.o: /usr/include/secure/_string.h /usr/include/sys/types.h
+BuildMaze.o: /usr/include/sys/_types/_blkcnt_t.h
+BuildMaze.o: /usr/include/sys/_types/_blksize_t.h
+BuildMaze.o: /usr/include/sys/_types/_gid_t.h
+BuildMaze.o: /usr/include/sys/_types/_in_addr_t.h
+BuildMaze.o: /usr/include/sys/_types/_in_port_t.h
+BuildMaze.o: /usr/include/sys/_types/_ino_t.h
+BuildMaze.o: /usr/include/sys/_types/_ino64_t.h
+BuildMaze.o: /usr/include/sys/_types/_key_t.h
+BuildMaze.o: /usr/include/sys/_types/_nlink_t.h
+BuildMaze.o: /usr/include/sys/_types/_clock_t.h
+BuildMaze.o: /usr/include/sys/_types/_time_t.h
+BuildMaze.o: /usr/include/sys/_types/_useconds_t.h
+BuildMaze.o: /usr/include/sys/_types/_suseconds_t.h
+BuildMaze.o: /usr/include/sys/_types/_fd_def.h
+BuildMaze.o: /usr/include/sys/_types/_fd_setsize.h
+BuildMaze.o: /usr/include/sys/_types/_fd_set.h
+BuildMaze.o: /usr/include/sys/_types/_fd_clr.h
+BuildMaze.o: /usr/include/sys/_types/_fd_zero.h
+BuildMaze.o: /usr/include/sys/_types/_fd_isset.h
+BuildMaze.o: /usr/include/sys/_types/_fd_copy.h
+BuildMaze.o: /usr/include/sys/_types/_pthread_cond_t.h
+BuildMaze.o: /usr/include/sys/_types/_pthread_condattr_t.h
+BuildMaze.o: /usr/include/sys/_types/_pthread_mutex_t.h
+BuildMaze.o: /usr/include/sys/_types/_pthread_mutexattr_t.h
+BuildMaze.o: /usr/include/sys/_types/_pthread_once_t.h
+BuildMaze.o: /usr/include/sys/_types/_pthread_rwlock_t.h
+BuildMaze.o: /usr/include/sys/_types/_pthread_rwlockattr_t.h
+BuildMaze.o: /usr/include/sys/_types/_pthread_t.h
+BuildMaze.o: /usr/include/sys/_types/_pthread_key_t.h
+BuildMaze.o: /usr/include/sys/_types/_fsblkcnt_t.h
+BuildMaze.o: /usr/include/sys/_types/_fsfilcnt_t.h /usr/include/sys/stat.h
+BuildMaze.o: /usr/include/sys/_types/_timespec.h
+BuildMaze.o: /usr/include/sys/_types/_s_ifmt.h
+BuildMaze.o: /usr/include/sys/_types/_filesec_t.h /usr/include/FL/Xutf8.h
+BuildMaze.o: /usr/include/X11/X.h /usr/include/X11/Xlib.h
+BuildMaze.o: /usr/include/X11/Xfuncproto.h /usr/include/stddef.h
+BuildMaze.o: /usr/include/sys/_types/_ptrdiff_t.h
+BuildMaze.o: /usr/include/sys/_types/_wint_t.h /usr/include/tkIntXlibDecls.h
+BuildMaze.o: /usr/include/X11/Xutil.h /usr/include/locale.h
+BuildMaze.o: /usr/include/_locale.h /usr/include/FL/Enumerations.H
+BuildMaze.o: /usr/include/FL/fl_ask.H MapWidget.h /usr/include/FL/Fl_Widget.H
+BuildMaze.o: /usr/include/FL/Fl_Button.H /usr/include/FL/Fl_Counter.H
+BuildMaze.o: /usr/include/FL/Fl_Valuator.H /usr/include/FL/Fl_Window.H
+Vertex.o: /usr/include/stdio.h /usr/include/sys/cdefs.h
+Vertex.o: /usr/include/sys/_symbol_aliasing.h
+Vertex.o: /usr/include/sys/_posix_availability.h /usr/include/Availability.h
+Vertex.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+Vertex.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+Vertex.o: /usr/include/i386/_types.h /usr/include/sys/_types/_va_list.h
+Vertex.o: /usr/include/sys/_types/_size_t.h /usr/include/sys/_types/_null.h
+Vertex.o: /usr/include/sys/_types/_off_t.h /usr/include/sys/_types/_ssize_t.h
+Vertex.o: /usr/include/secure/_stdio.h /usr/include/secure/_common.h Vertex.h

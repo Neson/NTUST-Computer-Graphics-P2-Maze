@@ -1,16 +1,16 @@
 /************************************************************************
      File:        RunMaze.cpp
 
-     Author:     
+     Author:
                   Stephen Chenney, schenney@cs.wisc.edu
      Modifier
                   Yu-Chi Lai, yu-chi@cs.wisc.edu
 
-     Comment:    
+     Comment:
 						(c) 2001-2002 Stephen Chenney, University of Wisconsin at Madison
 
 						Main program
-		
+
 
      Platform:    Visio Studio.Net 2003 (converted to 2005)
 
@@ -123,12 +123,13 @@ int main(int argc, char *argv[])
 {
 	Fl_Window	*window;
 	Fl_Button	*load_button;
+	Fl_Button	*play_button;
 
 	Fl::visual(FL_RGB);
 
 	// Create the window that displays the 3D view.
-	maze_window = 
-		new MazeWindow(MAP_WINDOW_W + 50, 50, MAZE_WINDOW_W,
+	maze_window =
+		new MazeWindow(MAP_WINDOW_W + 120, 50, MAZE_WINDOW_W,
 							MAZE_WINDOW_H, "Maze View", NULL);
 	maze_window->show();
 
@@ -138,6 +139,9 @@ int main(int argc, char *argv[])
 
 	load_button = new Fl_Button(GAP, GAP, BUTTON_W, BUTTON_H, "Load Maze");
 	load_button->callback(Load_Callback, NULL);
+
+	play_button = new Fl_Button(GAP+BUTTON_W+GAP, GAP, BUTTON_W, BUTTON_H, "TEST");
+	play_button->callback(Load_Callback, NULL);
 
 	// This puts a maze map drawing widget in the map window.
 	map_window = new MapWidget(GAP, 2 * GAP + BUTTON_H,

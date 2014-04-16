@@ -1,16 +1,16 @@
 /************************************************************************
      File:        Maze.cpp
 
-     Author:     
+     Author:
                   Stephen Chenney, schenney@cs.wisc.edu
      Modifier
                   Yu-Chi Lai, yu-chi@cs.wisc.edu
 
-     Comment:    
+     Comment:
 						(c) 2001-2002 Stephen Chenney, University of Wisconsin at Madison
 
 						Class header file for Maze class. Manages the maze.
-		
+
 
      Platform:    Visio Studio.Net 2003 (converted to 2005)
 
@@ -25,6 +25,9 @@
 #include <FL/Fl.H>
 #include <FL/fl_draw.H>
 #include "GL/gl.h"
+#define PI 3.1415926
+#define S_WIDTH 300
+#define S_HEIGHT 300
 
 const char Maze::X = 0;
 const char Maze::Y = 1;
@@ -393,10 +396,10 @@ Build_Maze()
 
 		ei = available[index];
 
-		if ( edges[ei]->neighbors[0] && 
+		if ( edges[ei]->neighbors[0] &&
 			 !edges[ei]->neighbors[0]->counter )
 			to_expand = edges[ei]->neighbors[0];
-		else if ( edges[ei]->neighbors[1] && 
+		else if ( edges[ei]->neighbors[1] &&
 			 !edges[ei]->neighbors[1]->counter )
 			to_expand = edges[ei]->neighbors[1];
 
@@ -459,7 +462,7 @@ Find_View_Cell(Cell *seed_cell)
 {
 	Cell    *new_cell;
 
-	// 
+	//
 	while ( ! ( seed_cell->Point_In_Cell(viewer_posn[X], viewer_posn[Y],
 													 viewer_posn[Z], new_cell) ) ) {
 		if ( new_cell == 0 ) {
@@ -469,7 +472,7 @@ Find_View_Cell(Cell *seed_cell)
 
 		seed_cell = new_cell;
     }
-    
+
     view_cell = seed_cell;
 }
 
@@ -524,7 +527,7 @@ Move_View_Posn(const float dx, const float dy, const float dz)
 
 //**********************************************************************
 //
-// * Set the viewer's location 
+// * Set the viewer's location
 //======================================================================
 void Maze::
 Set_View_Posn(float x, float y, float z)
@@ -633,17 +636,137 @@ Draw_View(const float focal_dist)
 {
 	frame_num++;
 
+	printf("(%f %f) %f < %f\n", viewer_posn[X], viewer_posn[Y], viewer_dir, viewer_fov);
+
+	float local_walls[num_edges*4];
+	float local_walls_color[num_edges*4];
+	float wall_height = 1.8;
+	float wall_local_dist[num_edges];
+	float wall_local_dist_max = 0;
+	float local_max_y=0;
+
+	for (int i = 0 ; i < num_edges ; i++ )
+		if ( edges[i]->opaque )	{
+			float   x1, y1, x2, y2;
+
+			x1 = edges[i]->endpoints[Edge::START]->posn[Vertex::X];
+			y1 = edges[i]->endpoints[Edge::START]->posn[Vertex::Y];
+			x2 = edges[i]->endpoints[Edge::END]->posn[Vertex::X];
+			y2 = edges[i]->endpoints[Edge::END]->posn[Vertex::Y];
+
+			float   lx1, ly1, lx2, ly2;
+
+			lx1 = x1 - viewer_posn[X];
+			lx2 = x2 - viewer_posn[X];
+			ly1 = y1 - viewer_posn[Y];
+			ly2 = y2 - viewer_posn[Y];
+
+			// 轉成本地相對坐標, x-right y-front, x1 y1 x2 y2
+			local_walls[i*4] = -sqrt(lx1*lx1+ly1*ly1)*sinf(atan2(ly1, lx1)-(viewer_dir*PI/180));
+			local_walls[i*4+1] = sqrt(lx1*lx1+ly1*ly1)*cosf(atan2(ly1, lx1)-(viewer_dir*PI/180));
+			local_walls[i*4+2] = -sqrt(lx2*lx2+ly2*ly2)*sinf(atan2(ly2, lx2)-(viewer_dir*PI/180));
+			local_walls[i*4+3] = sqrt(lx2*lx2+ly2*ly2)*cosf(atan2(ly2, lx2)-(viewer_dir*PI/180));
+
+
+			wall_local_dist[i] = sqrt(((lx1+lx2)/2)*((lx1+lx2)/2) + ((ly1+ly2)/2)*((ly1+ly2)/2));
+			if (wall_local_dist_max < wall_local_dist[i]) wall_local_dist_max = wall_local_dist[i];
+
+
+			// 確保第一個點離我比較近, y 不負
+			if (local_walls[i*4]*local_walls[i*4] + local_walls[i*4+1]*local_walls[i*4+1] >
+					local_walls[i*4+2]*local_walls[i*4+2] + local_walls[i*4+3]*local_walls[i*4+3] ||
+					local_walls[i*4+1] < 0) {
+				float tx=local_walls[i*4], ty=local_walls[i*4+1];
+				local_walls[i*4] = local_walls[i*4+2];
+				local_walls[i*4+1] = local_walls[i*4+3];
+				local_walls[i*4+2] = tx;
+				local_walls[i*4+3] = ty;
+			}
+
+			if (local_walls[i*4+3] > local_max_y) local_max_y = local_walls[i*4+3];
+
+			// copy the color, r g b a
+			local_walls_color[i*4] = floor(edges[i]->color[0] * 255.0);
+			local_walls_color[i*4+1] = floor(edges[i]->color[1] * 255.0);
+			local_walls_color[i*4+2] = floor(edges[i]->color[2] * 255.0);
+			local_walls_color[i*4+3] = 255;
+
+			if (i < 5)
+			printf("(%f, %f), (%f, %f)\n(%f, %f), (%f, %f)////\n", x1, y1, x2, y2, local_walls[i*4], local_walls[i*4+1], local_walls[i*4+2], local_walls[i*4+3]);
+		} else {
+			local_walls[i*4] = -1;
+			local_walls[i*4+1] = -1;
+			local_walls[i*4+2] = -1;
+			local_walls[i*4+3] = -1;
+			wall_local_dist[i] = -1;
+		}
+
+	float slice = 0.2;
+	for (float i=wall_local_dist_max+1; i>=0; i-=slice) {
+		for (int j=0; j<num_edges; j++) {
+			if (wall_local_dist[j] < (i+slice) && wall_local_dist[j] >= i && local_walls[j*4+1] > 0) {
+				float x1 = local_walls[j*4+0];
+				float y1 = local_walls[j*4+1];
+				float x2 = local_walls[j*4+2];
+				float y2 = local_walls[j*4+3];
+				float l = sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
+
+
+				float m = 1;
+				for (float k=0; k<=l; k+=m) {
+
+					float px1 = x1 + (x2-x1)/l*k;
+					float py1 = y1 + (y2-y1)/l*k;
+					float px2 = x1 + (x2-x1)/l*(k+m);
+					float py2 = y1 + (y2-y1)/l*(k+m);
+
+					if (px2 - x1 > l) px2 = x2;
+					if (py2 - y1 > l) py2 = y2;
+
+					if (py1 < 0 || py2 < 0) continue;
+
+					float h1 = wall_height*((S_HEIGHT/2)/tanf(viewer_fov*PI/360))/sqrt(px1*px1+py1*py1);
+					float h2 = wall_height*((S_HEIGHT/2)/tanf(viewer_fov*PI/360))/sqrt(px2*px2+py2*py2);
+					float p1 = px1 * (((S_WIDTH/2)/tanf(viewer_fov*PI/360))/py1);
+					float p2 = px2 * (((S_WIDTH/2)/tanf(viewer_fov*PI/360))/py2);
+
+					glBegin(GL_TRIANGLES);
+					glColor3f(local_walls_color[j*4]/255, local_walls_color[j*4+1]/255, local_walls_color[j*4+2]/255);
+					glVertex2f(p1, h1);
+					glVertex2f(p1, -h1);
+					glVertex2f(p2, -h2);
+					glEnd();
+					glBegin(GL_TRIANGLES);
+					glColor3f(local_walls_color[j*4]/255, local_walls_color[j*4+1]/255, local_walls_color[j*4+2]/255);
+					glVertex2f(p2, h2);
+					glVertex2f(p2, -h2);
+					glVertex2f(p1, h1);
+					glEnd();
+				}
+			}
+
+		}
+
+	}
+
 	//###################################################################
 	// TODO
 	// The rest is up to you!
 	//###################################################################
 
-	glBegin(GL_TRIANGLES);
-	glColor3f(1.0f, 0.0f, 0.0f);
-	glVertex2f(-100, -50);
-	glVertex2f(100,-50.0f);
-	glVertex2f(100, 50.0f);
-	glEnd();
+	// glBegin(GL_TRIANGLES);
+	// glColor3f(1.0f, 0.0f, 0.0f);
+	// glVertex2f(-100, -50);
+	// glVertex2f(100,-50.0f);
+	// glVertex2f(100, 50.0f);
+	// glEnd();
+
+	// glBegin(GL_TRIANGLES);
+	// glColor3f(0.0f, 1.0f, 0.0f);
+	// glVertex2f(0, 0);
+	// glVertex2f(200,100);
+	// glVertex2f(300, 0);
+	// glEnd();
 }
 
 
@@ -672,18 +795,18 @@ Draw_Frustum(int min_x, int min_y, int max_x, int max_y)
 
 	view_x = ( viewer_posn[X] - min_xp ) * scale;
 	view_y = ( viewer_posn[Y] - min_yp ) * scale;
-	fl_line(min_x + (int)floor(view_x + 
+	fl_line(min_x + (int)floor(view_x +
 			  cos(To_Radians(viewer_dir+viewer_fov / 2.0)) * scale),
-			  min_y + height- 
-			  (int)floor(view_y + 
-							 sin(To_Radians(viewer_dir+viewer_fov / 2.0)) * 
+			  min_y + height-
+			  (int)floor(view_y +
+							 sin(To_Radians(viewer_dir+viewer_fov / 2.0)) *
 							 scale),
 				min_x + (int)floor(view_x),
 				min_y + height - (int)floor(view_y));
-	fl_line(min_x + (int)floor(view_x + 
-										cos(To_Radians(viewer_dir-viewer_fov / 2.0))	* 
+	fl_line(min_x + (int)floor(view_x +
+										cos(To_Radians(viewer_dir-viewer_fov / 2.0))	*
 										scale),
-				min_y + height- 
+				min_y + height-
 				(int)floor(view_y + sin(To_Radians(viewer_dir-viewer_fov / 2.0)) *
 				scale),
 				min_x + (int)floor(view_x),
