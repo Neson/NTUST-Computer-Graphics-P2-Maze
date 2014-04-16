@@ -701,7 +701,7 @@ Draw_View(const float focal_dist)
 			wall_local_dist[i] = -1;
 		}
 
-	float slice = 0.2;
+	float slice = 1.0;
 	for (float i=wall_local_dist_max+1; i>=0; i-=slice) {
 		for (int j=0; j<num_edges; j++) {
 			if (wall_local_dist[j] < (i+slice) && wall_local_dist[j] >= i && local_walls[j*4+1] > 0) {
@@ -709,40 +709,36 @@ Draw_View(const float focal_dist)
 				float y1 = local_walls[j*4+1];
 				float x2 = local_walls[j*4+2];
 				float y2 = local_walls[j*4+3];
-				float l = sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
 
 
-				float m = 1;
-				for (float k=0; k<=l; k+=m) {
+				// if (abs(atan2(x, y)) > viewer_dir*PI/360) { // point out of view, cut it.
 
-					float px1 = x1 + (x2-x1)/l*k;
-					float py1 = y1 + (y2-y1)/l*k;
-					float px2 = x1 + (x2-x1)/l*(k+m);
-					float py2 = y1 + (y2-y1)/l*(k+m);
-
-					if (px2 - x1 > l) px2 = x2;
-					if (py2 - y1 > l) py2 = y2;
-
-					if (py1 < 0 || py2 < 0) continue;
-
-					float h1 = wall_height*((S_HEIGHT/2)/tanf(viewer_fov*PI/360))/sqrt(px1*px1+py1*py1);
-					float h2 = wall_height*((S_HEIGHT/2)/tanf(viewer_fov*PI/360))/sqrt(px2*px2+py2*py2);
-					float p1 = px1 * (((S_WIDTH/2)/tanf(viewer_fov*PI/360))/py1);
-					float p2 = px2 * (((S_WIDTH/2)/tanf(viewer_fov*PI/360))/py2);
-
-					glBegin(GL_TRIANGLES);
-					glColor3f(local_walls_color[j*4]/255, local_walls_color[j*4+1]/255, local_walls_color[j*4+2]/255);
-					glVertex2f(p1, h1);
-					glVertex2f(p1, -h1);
-					glVertex2f(p2, -h2);
-					glEnd();
-					glBegin(GL_TRIANGLES);
-					glColor3f(local_walls_color[j*4]/255, local_walls_color[j*4+1]/255, local_walls_color[j*4+2]/255);
-					glVertex2f(p2, h2);
-					glVertex2f(p2, -h2);
-					glVertex2f(p1, h1);
-					glEnd();
+				// }
+				float ww = sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
+				float xp = (x1-x2)/ww;
+				float yp = (y1-y2)/ww;
+				while (y2 <= 0) { // point out of view, push it forward.
+					x2 += xp;
+					y2 += yp;
 				}
+
+				float h1 = wall_height*((S_HEIGHT/2)/tanf(viewer_fov*PI/360))/sqrt(x1*x1+y1*y1);
+				float h2 = wall_height*((S_HEIGHT/2)/tanf(viewer_fov*PI/360))/sqrt(x2*x2+y2*y2);
+				float p1 = x1 * (((S_WIDTH/2)/tanf(viewer_fov*PI/360))/y1);
+				float p2 = x2 * (((S_WIDTH/2)/tanf(viewer_fov*PI/360))/y2);
+
+				glBegin(GL_TRIANGLES);
+				glColor3f(local_walls_color[j*4]/255, local_walls_color[j*4+1]/255, local_walls_color[j*4+2]/255);
+				glVertex2f(p1, h1);
+				glVertex2f(p1, -h1);
+				glVertex2f(p2, -h2);
+				glEnd();
+				glBegin(GL_TRIANGLES);
+				glColor3f(local_walls_color[j*4]/255, local_walls_color[j*4+1]/255, local_walls_color[j*4+2]/255);
+				glVertex2f(p2, h2);
+				glVertex2f(p2, -h2);
+				glVertex2f(p1, h1);
+				glEnd();
 			}
 
 		}
