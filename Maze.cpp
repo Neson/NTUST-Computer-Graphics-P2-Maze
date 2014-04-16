@@ -722,8 +722,8 @@ Draw_View(const float focal_dist)
 					y2 += yp;
 				}
 
-				float h1 = wall_height*((S_HEIGHT/2)/tanf(viewer_fov*PI/360))/sqrt(x1*x1+y1*y1);
-				float h2 = wall_height*((S_HEIGHT/2)/tanf(viewer_fov*PI/360))/sqrt(x2*x2+y2*y2);
+				float h1 = wall_height*((S_HEIGHT/2)/tanf(viewer_fov*PI/360))/y1;
+				float h2 = wall_height*((S_HEIGHT/2)/tanf(viewer_fov*PI/360))/y2;
 				float p1 = x1 * (((S_WIDTH/2)/tanf(viewer_fov*PI/360))/y1);
 				float p2 = x2 * (((S_WIDTH/2)/tanf(viewer_fov*PI/360))/y2);
 
