@@ -667,6 +667,14 @@ Draw_View(const float focal_dist)
 			local_walls[i*4+2] = -sqrt(lx2*lx2+ly2*ly2)*sinf(atan2(ly2, lx2)-(viewer_dir*PI/180));
 			local_walls[i*4+3] = sqrt(lx2*lx2+ly2*ly2)*cosf(atan2(ly2, lx2)-(viewer_dir*PI/180));
 
+			if (abs(local_walls[i*4]) > 100 || abs(local_walls[i*4+1]) > 100) { // XDD
+				local_walls[i*4] = -1;
+				local_walls[i*4+1] = -1;
+				local_walls[i*4+2] = -1;
+				local_walls[i*4+3] = -1;
+				wall_local_dist[i] = -1;
+				continue;
+			}
 
 			wall_local_dist[i] = sqrt(((lx1+lx2)/2)*((lx1+lx2)/2) + ((ly1+ly2)/2)*((ly1+ly2)/2));
 			if (wall_local_dist_max < wall_local_dist[i]) wall_local_dist_max = wall_local_dist[i];
@@ -691,8 +699,6 @@ Draw_View(const float focal_dist)
 			local_walls_color[i*4+2] = floor(edges[i]->color[2] * 255.0);
 			local_walls_color[i*4+3] = 255;
 
-			if (i < 5)
-			printf("(%f, %f), (%f, %f)\n(%f, %f), (%f, %f)////\n", x1, y1, x2, y2, local_walls[i*4], local_walls[i*4+1], local_walls[i*4+2], local_walls[i*4+3]);
 		} else {
 			local_walls[i*4] = -1;
 			local_walls[i*4+1] = -1;
@@ -702,7 +708,8 @@ Draw_View(const float focal_dist)
 		}
 
 	float slice = 1.0;
-	for (float i=wall_local_dist_max+1; i>=0; i-=slice) {
+	if (wall_local_dist_max > 400) wall_local_dist_max = 100; // XD
+	for (float i=wall_local_dist_max+1; i>=0; i-=slice) {  // XD?
 		for (int j=0; j<num_edges; j++) {
 			if (wall_local_dist[j] < (i+slice) && wall_local_dist[j] >= i && local_walls[j*4+1] > 0) {
 				float x1 = local_walls[j*4+0];
@@ -711,13 +718,10 @@ Draw_View(const float focal_dist)
 				float y2 = local_walls[j*4+3];
 
 
-				// if (abs(atan2(x, y)) > viewer_dir*PI/360) { // point out of view, cut it.
-
-				// }
 				float ww = sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
 				float xp = (x1-x2)/ww;
 				float yp = (y1-y2)/ww;
-				while (y2 <= 0) { // point out of view, push it forward.
+				while (y2 <= 0) { // point out of view, push it forward. XD
 					x2 += xp;
 					y2 += yp;
 				}
